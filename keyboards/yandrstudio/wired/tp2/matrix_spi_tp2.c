@@ -29,7 +29,7 @@ const uint8_t mask_of_each_595[MATRIX_ROWS-1][MATRIX_COLS][2] = MATRIX_OF_74HC59
 const uint8_t sr_zero = SR_74HC595_ZERO_ONEP;
 
 static void select_col_aux(uint8_t col_595_i, uint8_t val_595) {
-    spi_start(SPI_74HC595_CS, true, 0, 1);
+    spi_start(SPI_74HC595_CS, true, 0, 4);
     for (uint8_t i = 0; i < NUM_OF_74HC595; ++i) {
         if (i == col_595_i) {
             spi_write(val_595);
@@ -48,7 +48,7 @@ static void select_key(uint8_t row, uint8_t col) {
 static void unselect_cols(void) {
     uint8_t i = 0;
 
-    spi_start(SPI_74HC595_CS, true, 0, 1);
+    spi_start(SPI_74HC595_CS, true, 0, 4);
     for (i = 0; i < NUM_OF_74HC595; ++i) {
         spi_write(sr_zero);
     }
