@@ -26,7 +26,7 @@ NKRO_ENABLE = yes           # USB Nkey Rollover
 ENCODER_ENABLE = yes
 
 RGBLIGHT_ENABLE = yes
-RGBLIGHT_DRIVER = WS2812
+RGBLIGHT_DRIVER = ws2812
 WS2812_DRIVER = pwm
 
 AUDIO_ENABLE = yes
@@ -36,4 +36,5 @@ HAPTIC_ENABLE = yes
 HAPTIC_DRIVER = solenoid
 
 CUSTOM_MATRIX = lite    # for using the A9 pin as matrix io
-QUANTUM_SRC += matrix_tp2.c
+QUANTUM_SRC += matrix_io_tp2.c
+# QUANTUM_SRC += matrix_spi_tp2.c spi_master.c
