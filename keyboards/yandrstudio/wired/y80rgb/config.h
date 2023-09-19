@@ -34,6 +34,7 @@
 #ifdef RGB_MATRIX_ENABLE
 
 #    define RGB_DI_PIN B8
+#    define WS2812_DI_PIN B8
 
 #    define RGB_MATRIX_LED_COUNT 94
 
@@ -97,6 +98,16 @@
 #    define RGB_MATRIX_LAYERS_RETAIN_VAL
 #    define RGB_MATRIX_MAX_LAYERS 1
 
+#endif
+
+#ifdef RGBLIGHT_ENABLE
+#    define WS2812_DI_PIN B8
+#    define RGBLED_NUM 94
+#    define RGBLIGHT_SLEEP
+#    define RGBLIGHT_VAL_STEP 10
+#    define RGBLIGHT_LIMIT_VAL 70
+#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RGB_TEST)
+#    define RGBLIGHT_EFFECT_RGB_TEST
 #endif
 
 #ifdef WS2812_DRIVER_PWM
