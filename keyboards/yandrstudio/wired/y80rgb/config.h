@@ -27,8 +27,8 @@
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
-#define WEAR_LEVELING_BACKING_SIZE 4096
-#define WEAR_LEVELING_LOGICAL_SIZE 2048
+#define WEAR_LEVELING_BACKING_SIZE 2048
+#define WEAR_LEVELING_LOGICAL_SIZE 1024
 
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE

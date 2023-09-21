@@ -24,14 +24,16 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = yes           # USB Nkey Rollover
 # NO_USB_STARTUP_CHECK = yes
 
-# RGB_MATRIX_ENABLE = yes
-# RGB_MATRIX_DRIVER = ws2812
+RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = ws2812
 WS2812_DRIVER = pwm
 
 # CONSOLE_ENABLE = yes         # Console for debug
 
-# QUANTUM_SRC += rgb_matrix_layer.c
+QUANTUM_SRC += rgb_matrix_layer.c
+
+LTO_ENABLE = yes
 
 # OPT_DEFS += -DFACTORY_TEST
-RGBLIGHT_ENABLE = yes
-RGBLIGHT_DRIVER = ws2812
+# RGBLIGHT_ENABLE = yes
+# RGBLIGHT_DRIVER = ws2812
