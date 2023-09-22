@@ -7,7 +7,7 @@
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAADD
 #define MANUFACTURER    "MACHINA"
-#define PRODUCT         "65E"
+#define PRODUCT         "MACHINA ORBIT"
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
