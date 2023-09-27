@@ -172,6 +172,7 @@ A creative coder.
 | korea80         | 0xAA96    | 0xAAF1                   | Hotswap,RGB                      | &check;           |
 | inkc65          | 0xAA96    | 0xAAF2                   | Hotswap,      RGB                | &check;           |
 | rsalice         | 0xAA96    | 0xAAF3                   | Hotswap, BLE, RGB,Alice          | &check;           |
+| bs65            | 0xAA96    | 0xAAF4                   | Hotswap                          | &check;           |
 
 
 ### Obsolete or Test keyboard for reference design only
