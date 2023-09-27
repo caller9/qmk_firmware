@@ -169,6 +169,9 @@ A creative coder.
 | rs40v2          | 0xAA96    | 0xAAE9                   | Hotswap, BLE, RGB                | &check;           |
 | rsalice         | 0xAA96    | 0xAAEE                   | Hotswap, BLE, RGB                | &check;           |
 | island75        | 0xAA96    | 0xAAF0                   | Hotswap, BLE, RGB                | &check;           |
+| korea80         | 0xAA96    | 0xAAF1                   | Hotswap,RGB                      | &check;           |
+| inkc65          | 0xAA96    | 0xAAF2                   | Hotswap,      RGB                | &check;           |
+| rsalice         | 0xAA96    | 0xAAF3                   | Hotswap, BLE, RGB,Alice          | &check;           |
 
 
 ### Obsolete or Test keyboard for reference design only

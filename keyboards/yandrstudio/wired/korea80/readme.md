@@ -2,7 +2,7 @@ korea80
 ===
 
 A 80% keyboard with rgb (keys) and oleds.
-This keyboard uses 32u4 with 16mhz HSE as MCU.
+This keyboard uses stm32 with 16mhz HSE as MCU.
 
 Keyboard Maintainer: https://github.com/jiaxin96
 

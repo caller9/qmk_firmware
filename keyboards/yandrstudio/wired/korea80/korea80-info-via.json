@@ -1,7 +1,7 @@
 {
     "name": "korea80",
     "vendorId": "0xAA96",
-    "productId": "0xAAF2",
+    "productId": "0xAAF1",
     "keycodes": [
         "qmk_lighting"
     ],
