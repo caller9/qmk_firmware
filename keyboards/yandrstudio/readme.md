@@ -170,7 +170,7 @@ A creative coder.
 | rsalice         | 0xAA96    | 0xAAEE                   | Hotswap, BLE, RGB                | &check;           |
 | island75        | 0xAA96    | 0xAAF0                   | Hotswap, BLE, RGB                | &check;           |
 | korea80         | 0xAA96    | 0xAAF1                   | Hotswap,RGB                      | &check;           |
-| inkc65          | 0xAA96    | 0xAAF2                   | Hotswap,      RGB                | &check;           |
+| inkc65          | 0xAA96    | 0xAAF2(shadow of 0xAA88) | Hotswap,      RGB                | &check;           |
 | bs65            | 0xAA96    | 0xAAF3                   | Hotswap                          | &check;           |
 | rsalice         | 0xAA96    | 0xAAF4                   | Hotswap, BLE, RGB,Alice          | &check;           |
 
