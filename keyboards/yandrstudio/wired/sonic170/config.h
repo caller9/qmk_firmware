@@ -51,7 +51,7 @@
 #endif
 
 #ifdef RGBLIGHT_ENABLE
-#    define RGB_DI_PIN A8
+#    define WS2812_DI_PIN A8
 #    define RGBLED_NUM 10
 #    define RGBLIGHT_SLEEP
 #    define RGBLIGHT_VAL_STEP 10
