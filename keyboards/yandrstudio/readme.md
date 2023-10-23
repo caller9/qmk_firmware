@@ -175,6 +175,7 @@ A creative coder.
 | rsalice         | 0xAA96    | 0xAAF4                   | Hotswap, BLE, RGB,Alice          | &check;           |
 | razor80         | 0xAA96    | 0xAAF5                   | F103                             | &check;           |
 | dpad            | 0xAA96    | 0xAAF6                   | Hotswap, BLE, RGB, Encoder, Pad  | &check;           |
+| tn80v2          | 0xAA96    | 0xAAF7                   | Hotswap, F103                    | &check;           |
 
 
 ### Obsolete or Test keyboard for reference design only

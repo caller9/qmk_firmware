@@ -1,7 +1,7 @@
 {
-    "name": "RAZOR80",
+    "name": "TN80V2",
     "vendorId": "0xAA96",
-    "productId": "0xAAF5",
+    "productId": "0xAAF7",
     "keycodes": ["qmk_lighting"],
     "menus": ["qmk_rgblight"],
     "customKeycodes": [
