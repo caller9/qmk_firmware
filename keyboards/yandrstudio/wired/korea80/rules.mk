@@ -29,4 +29,6 @@ RGB_MATRIX_DRIVER = ws2812
 # RGBLIGHT_DRIVER = ws2812
 WS2812_DRIVER = pwm
 
+QUANTUM_SRC += rgb_matrix_layer.c
+
 LTO_ENABLE = yes

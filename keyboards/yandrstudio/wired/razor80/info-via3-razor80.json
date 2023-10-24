@@ -1,7 +1,7 @@
 {
     "name": "RAZOR80",
     "vendorId": "0xAA96",
-    "productId": "0xAA0D",
+    "productId": "0xAAF5",
     "keycodes": ["qmk_lighting"],
     "menus": ["qmk_rgblight"],
     "customKeycodes": [

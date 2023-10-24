@@ -31,7 +31,14 @@
 
 #    define WS2812_DI_PIN B3
 
+#define LAYOUT_RGB_88
+
+#if defined(LAYOUT_RGB_87)
+#    define RGB_MATRIX_LED_COUNT 121
+#endif
+#if defined(LAYOUT_RGB_88)
 #    define RGB_MATRIX_LED_COUNT 122
+#endif
 
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
 #    define RGB_MATRIX_KEYPRESSES

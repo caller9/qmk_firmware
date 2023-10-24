@@ -173,8 +173,12 @@ A creative coder.
 | inkc65          | 0xAA96    | 0xAAF2(shadow of 0xAA88) | Hotswap,      RGB                | &check;           |
 | bs65            | 0xAA96    | 0xAAF3                   | Hotswap                          | &check;           |
 | rsalice         | 0xAA96    | 0xAAF4                   | Hotswap, BLE, RGB,Alice          | &check;           |
-| razor80         | 0xAA96    | 0xAAF5                   | F103                             | &check;           |
-| link65_alt      | 0xAA96    | 0xAAF6                   | F103                             | &check;           |
+| razor80         | 0xAA96    | 0xAAF5                   | Hotswap, F103                    | &check;           |
+| dpad            | 0xAA96    | 0xAAF6                   | Hotswap, BLE, RGB, Encoder, Pad  | &check;           |
+| tn80v2          | 0xAA96    | 0xAAF7                   | Hotswap, F103                    | &check;           |
+| link65_alt      | 0xAA96    | 0xAAF8                   | Hotswap, F103                    | &check;           |
+| ns75            | 0xAA96    | 0xAAF9                   | Hotswap, BLEV2                   | &check;           |
+| vxe75_mag       | 0xAA96    | 0xAAFA                   | MAG                              | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
