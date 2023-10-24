@@ -174,6 +174,7 @@ A creative coder.
 | bs65            | 0xAA96    | 0xAAF3                   | Hotswap                          | &check;           |
 | rsalice         | 0xAA96    | 0xAAF4                   | Hotswap, BLE, RGB,Alice          | &check;           |
 | razor80         | 0xAA96    | 0xAAF5                   | F103                             | &check;           |
+| link65_alt      | 0xAA96    | 0xAAF6                   | F103                             | &check;           |
 
 
 ### Obsolete or Test keyboard for reference design only
