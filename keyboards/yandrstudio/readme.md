@@ -182,7 +182,7 @@ A creative coder.
 | d40             | 0xAA96    | 0xAAFC                   | Hotswap, RGB                     | &quest;           |
 | nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
 | yg75            | 0xAA96    | 0xAA81                   | Hotswap, BLE                     | &quest;           |
-|                 | 0xAA96    | 0xAACC                   |                                  | &quest;           |
+| swk60           | 0xAA96    | 0xAACC                   | Hotswap, 60+pad                  | &quest;           |
 |                 | 0xAA96    | 0xAAFD                   |                                  | &quest;           |
 |                 | 0xAA96    | 0xAAFE                   |                                  | &quest;           |
 |                 | 0xAA96    | 0xAA50                   |                                  | &quest;           |
