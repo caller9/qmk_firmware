@@ -181,6 +181,12 @@ A creative coder.
 | star80          | 0xAA96    | 0xAAFB                   | Hotswap, RGB                     | &quest;           |
 | d40             | 0xAA96    | 0xAAFC                   | Hotswap, RGB                     | &quest;           |
 | nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
+| yg75            | 0xAA96    | 0xAA81                   | Hotswap, BLE                     | &quest;           |
+|                 | 0xAA96    | 0xAACC                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAAFD                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAAFE                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA50                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA51                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
