@@ -167,18 +167,20 @@ A creative coder.
 | l68             | 0xAA96    | 0xAAE7                   | Hotswap, RGB                     | &check;           |
 | rose65v2        | 0xAA96    | 0xAAE8(shadow of 0xAA88) | Hotswap, RGB                     | &check;           |
 | rs40v2          | 0xAA96    | 0xAAE9                   | Hotswap, BLE, RGB                | &check;           |
-| rsalice         | 0xAA96    | 0xAAEE                   | Hotswap, BLE, RGB                | &check;           |
-| island75        | 0xAA96    | 0xAAF0                   | Hotswap, BLE, RGB                | &check;           |
+| island75        | 0xAA96    | 0xAAF0                   | Hotswap, BLE, RGB                | &quest;           |
 | korea80         | 0xAA96    | 0xAAF1                   | Hotswap,RGB                      | &check;           |
 | inkc65          | 0xAA96    | 0xAAF2(shadow of 0xAA88) | Hotswap,      RGB                | &check;           |
 | bs65            | 0xAA96    | 0xAAF3                   | Hotswap                          | &check;           |
-| rsalice         | 0xAA96    | 0xAAF4                   | Hotswap, BLE, RGB,Alice          | &check;           |
+| rsalice         | 0xAA96    | 0xAAF4                   | Hotswap, BLE, RGB,Alice          | &quest;           |
 | razor80         | 0xAA96    | 0xAAF5                   | Hotswap, F103                    | &check;           |
 | dpad            | 0xAA96    | 0xAAF6                   | Hotswap, BLE, RGB, Encoder, Pad  | &check;           |
 | tn80v2          | 0xAA96    | 0xAAF7                   | Hotswap, F103                    | &check;           |
 | link65_alt      | 0xAA96    | 0xAAF8                   | Hotswap, F103                    | &check;           |
-| ns75            | 0xAA96    | 0xAAF9                   | Hotswap, BLEV2                   | &check;           |
-| vxe75_mag       | 0xAA96    | 0xAAFA                   | MAG                              | &quest;           |
+| ns75            | 0xAA96    | 0xAAF9                   | Hotswap, BLE                     | &quest;           |
+| v75_mag         | 0xAA96    | 0xAAFA                   | MAG                              | &quest;           |
+| star80          | 0xAA96    | 0xAAFB                   | Hotswap, RGB                     | &quest;           |
+| d40             | 0xAA96    | 0xAAFC                   | Hotswap, RGB                     | &quest;           |
+| nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
