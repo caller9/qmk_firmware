@@ -178,7 +178,7 @@ A creative coder.
 | link65_alt      | 0xAA96    | 0xAAF8                   | Hotswap, F103                    | &check;           |
 | ns75            | 0xAA96    | 0xAAF9                   | Hotswap, BLE                     | &quest;           |
 | v75_mag         | 0xAA96    | 0xAAFA                   | MAG                              | &quest;           |
-| star80          | 0xAA96    | 0xAAFB                   | Hotswap, RGB                     | &quest;           |
+| bs_star80       | 0xAA96    | 0xAAFB                   | Hotswap, RGB                     | &quest;           |
 | d40             | 0xAA96    | 0xAAFC                   | Hotswap, RGB                     | &quest;           |
 | nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
 | yg75            | 0xAA96    | 0xAA81                   | Hotswap, BLE                     | &quest;           |
