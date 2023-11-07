@@ -1,7 +1,7 @@
 swk80
 ===
 
-A 80% keyboard with rgb (keys and underglow).
+A 80% keyboard with rgb (keys) and oleds.
 This keyboard uses STM32F103 with 16mhz HSE as MCU.
 
 Keyboard Maintainer: https://github.com/jiaxin96
