@@ -183,8 +183,8 @@ A creative coder.
 | nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
 | yg75            | 0xAA96    | 0xAA81                   | Hotswap, BLE                     | &quest;           |
 | swk60           | 0xAA96    | 0xAACC                   | Hotswap, 60+pad                  | &quest;           |
-|                 | 0xAA96    | 0xAAFD                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAAFE                   |                                  | &quest;           |
+| hxj65           | 0xAA96    | 0xAAFD                   | Hotswap, F103                    | &quest;           |
+| yr80test        | 0xAA96    | 0xAAFE                   | Hotswap, F103, RGB               | &quest;           |
 |                 | 0xAA96    | 0xAA50                   |                                  | &quest;           |
 |                 | 0xAA96    | 0xAA51                   |                                  | &quest;           |
 
