@@ -1,5 +1,5 @@
 {
-    "name": "YR80TEST",
+    "name": "00-1 80%",
     "vendorId": "0xAA96",
     "productId": "0xAAFE",
     "keycodes": ["qmk_lighting"],
