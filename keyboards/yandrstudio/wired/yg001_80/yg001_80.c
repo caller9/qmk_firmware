@@ -13,31 +13,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "yr80test.h"
+#include "yg001_80.h"
 #include "process_magic.h"
 
-// #ifdef RGBLIGHT_ENABLE
-
-// const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-//     {0, 1, HSV_RED}
-// );
-
-// const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-//     my_capslock_layer
-// );
-
-// bool led_update_kb(led_t led_state) {
-//     rgblight_set_layer_state(0, led_state.caps_lock);
-//     return true;
-// }
-
-// void keyboard_post_init_kb(void) {
-//     rgblight_reload_from_eeprom();
-//     rgblight_layers = my_rgb_layers;
-// }
-
-// #endif
-
+void keyboard_pre_init_kb(void) {
+    setPinOutput(LED_CAPS_LOCK_PIN);
+    writePinLow(LED_CAPS_LOCK_PIN);
+    keyboard_pre_init_user();
+}
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_user(keycode, record)) { return false; }

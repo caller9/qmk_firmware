@@ -15,9 +15,9 @@
 #define MATRIX_COLS 12
 
 /* key matrix pins */
-//                        0    1    2    3     4    5   6    7    8   9   10   11 
-#define MATRIX_COL_PINS { A8,  B13,  B14, A15, B15, B3, B4,  B5, B6, B7, B8,  B9 }
-#define MATRIX_ROW_PINS { A9,  A10,  A5,  A6}
+//                        0   1    2    3    4    5   6   7   8   9   10  11
+#define MATRIX_COL_PINS { A8, B13, B14, A15, B15, B3, B4, B5, B6, B7, B8, B9 }
+#define MATRIX_ROW_PINS { A9, A10, A5,  A6}
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
@@ -30,15 +30,7 @@
 #ifdef RGB_MATRIX_ENABLE
 
 #    define WS2812_DI_PIN A7
-
-#define LAYOUT_RGB_42
-
-#if defined(LAYOUT_RGB_87)
-#    define RGB_MATRIX_LED_COUNT 121
-#endif
-#if defined(LAYOUT_RGB_42)
 #    define RGB_MATRIX_LED_COUNT 42
-#endif
 
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
 #    define RGB_MATRIX_KEYPRESSES
@@ -108,6 +100,7 @@
 #    define RGBLIGHT_LIMIT_VAL 180
 #    define RGBLIGHT_ANIMATIONS
 #    define RGBLIGHT_SLEEP
+
 #    define RGBLIGHT_LAYERS
 #    define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 #    define RGBLIGHT_LAYERS_RETAIN_VAL
