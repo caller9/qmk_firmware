@@ -186,7 +186,7 @@ A creative coder.
 | hxj65           | 0xAA96    | 0xAAFD                   | Hotswap, F103                    | &quest;           |
 | (yg)00-1 80%    | 0xAA96    | 0xAAFE(shadow of 0xAA0D) | Hotswap, F103, RGB               | &quest;           |
 | rs40v2          | 0xAA96    | 0xAA50                   | Hotswap, F103, RGB               | &quest;           |
-|                 | 0xAA96    | 0xAA51                   |                                  | &quest;           |
+| xbow-butterfly  | 0xAA96    | 0xAA51                   | Hotswap, BLE, Split              | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
