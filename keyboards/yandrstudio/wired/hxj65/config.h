@@ -28,9 +28,8 @@
 #define TAP_HOLD_CAPS_DELAY 250
 
 #ifdef RGBLIGHT_ENABLE
-// #    define RGB_DI_PIN A7
-#    define WS2812_DI_PIN A7
-#    define RGBLED_NUM 2
+#    define WS2812_DI_PIN B12
+#    define RGBLED_NUM 5
 #    define DRIVER_LED_TOTAL RGBLED_NUM
 #    define RGBLIGHT_SLEEP
 #    define RGBLIGHT_VAL_STEP 15
@@ -51,10 +50,4 @@
 #    define RGBLIGHT_LAYERS
 #    define RGBLIGHT_LAYERS_RETAIN_VAL
 #    define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-
-#   define WS2812_PWM_DRIVER PWMD3
-#   define WS2812_PWM_CHANNEL 2
-#   define WS2812_PWM_PAL_MODE 2
-#   define WS2812_DMA_STREAM STM32_DMA1_STREAM3
-#   define WS2812_DMA_CHANNEL 3
 #endif
