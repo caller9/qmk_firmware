@@ -166,7 +166,7 @@ A creative coder.
 | xj65            | 0xAA96    | 0xAAE6                   | Hotswap, RGB, TFT                | &check;           |
 | l68             | 0xAA96    | 0xAAE7                   | Hotswap, RGB                     | &check;           |
 | rose65v2        | 0xAA96    | 0xAAE8(shadow of 0xAA88) | Hotswap, RGB                     | &check;           |
-| rs40v2          | 0xAA96    | 0xAAE9                   | Hotswap, BLE, RGB                | &check;           |
+| rs46v2          | 0xAA96    | 0xAAE9                   | Hotswap, BLE, RGB                | &check;           |
 | island75        | 0xAA96    | 0xAAF0                   | Hotswap, BLE, RGB                | &quest;           |
 | korea80         | 0xAA96    | 0xAAF1                   | Hotswap,RGB                      | &check;           |
 | inkc65          | 0xAA96    | 0xAAF2(shadow of 0xAA88) | Hotswap,      RGB                | &check;           |
@@ -183,10 +183,10 @@ A creative coder.
 | nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
 | yg75            | 0xAA96    | 0xAA81                   | Hotswap, BLE                     | &quest;           |
 | swk60           | 0xAA96    | 0xAACC                   | Hotswap, 60+pad                  | &quest;           |
-|                 | 0xAA96    | 0xAAFD                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAAFE                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA50                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA51                   |                                  | &quest;           |
+| hxj65           | 0xAA96    | 0xAAFD                   | Hotswap, F103                    | &quest;           |
+| (yg)00-1 80%    | 0xAA96    | 0xAAFE(shadow of 0xAA0D) | Hotswap, F103, RGB               | &quest;           |
+| rs40v2          | 0xAA96    | 0xAA50                   | Hotswap, F103, RGB               | &quest;           |
+| xbow-butterfly  | 0xAA96    | 0xAA51                   | Hotswap, BLE, Split              | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
