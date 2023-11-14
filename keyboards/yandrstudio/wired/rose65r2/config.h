@@ -28,7 +28,7 @@
 #define TAP_HOLD_CAPS_DELAY 250
 
 #ifdef RGBLIGHT_ENABLE
-#    define RGB_DI_PIN A7
+#    define WS2812_DI_PIN A7
 #    define RGBLED_NUM 2
 #    define DRIVER_LED_TOTAL RGBLED_NUM
 #    define RGBLIGHT_SLEEP
