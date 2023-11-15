@@ -34,7 +34,7 @@
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
-#    define RGB_MATRIX_SPLIT {30, 30}
+// #    define RGB_MATRIX_SPLIT {30, 30}
 
 #    define WS2812_DI_PIN B9
 #    define RGB_MATRIX_LED_COUNT 60
@@ -117,8 +117,8 @@
 #   define SOFT_SERIAL_PIN B13
 #   define SERIAL_DEBUG
 
-#   define SELECT_SOFT_SERIAL_SPEED 1
-#    define SERIAL_DELAY_BLIP_TIME 1
+#   define SELECT_SOFT_SERIAL_SPEED 3
+#    define SERIAL_DELAY_BLIP_TIME 4
 
 // #   define SPLIT_TRANSPORT_MIRROR
 

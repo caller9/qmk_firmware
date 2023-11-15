@@ -1,13 +1,7 @@
 {
-  "name": "BS65_Y&R",
+  "name": "STAR STONE-65",
   "vendorId": "0xAA96",
   "productId": "0xAAF3",
-  "keycodes": [
-    "qmk_lighting"
-  ],
-  "menus": [
-    "qmk_rgblight"
-  ],
   "matrix": {
     "rows": 5,
     "cols": 15
