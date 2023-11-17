@@ -20,7 +20,8 @@ SERIAL_DRIVER = bitbang
 # NO_USB_STARTUP_CHECK = yes
 CONSOLE_ENABLE = yes         # Console for debug
 KEYBOARD_SHARED_EP = yes        # Free up some extra endpoints - needed if console+mouse+extra
-
+QUANTUM_SRC += SEGGER_RTT_printf.c SEGGER_RTT.c
+ALLOW_WARNINGS = yes
 
 # RGBLIGHT_ENABLE = yes
 # RGBLIGHT_DRIVER = WS2812

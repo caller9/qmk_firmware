@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "xboweg_r.h"
+#include "SEGGER_RTT.h"
+#include "wait.h"
 
 #ifdef BIU_BLE5_ENABLE
 #    include "biu_ble_common.h"
@@ -25,19 +27,19 @@ led_config_t g_led_config = {{
                                 {13,  14,  15,  16,  17,  18,  19},
                                 {25,  24,  23,  22,  21,  20,   NO_LED},
                                 { NO_LED,   NO_LED,   NO_LED,  26,  27,  28,  29},
-                                { NO_LED,  35,  34,  33,  32,  31,  30}, 
-                                {36,  37,  38,  39,  40,  41,  42}, 
-                                {49,  48,  47,  46,  45,  44,  43}, 
-                                { NO_LED,  50,  51,  52,  53,  54,  55}, 
+                                { NO_LED,  35,  34,  33,  32,  31,  30},
+                                {36,  37,  38,  39,  40,  41,  42},
+                                {49,  48,  47,  46,  45,  44,  43},
+                                { NO_LED,  50,  51,  52,  53,  54,  55},
                                 {59,  58,  57,  56,   NO_LED,   NO_LED,   NO_LED},
                             },
                             {
-                                {0,0},{37,0},{75,0},{112,0},{149,0},{187,0},       
+                                {0,0},{37,0},{75,0},{112,0},{149,0},{187,0},
                                 {224,16},{187,16},{149,16},{112,16},{75,16},{37,16},{0,16},
                                 {0,32},{37,32},{75,32},{112,32},{149,32},{187,32},{224,32},
                                     {187,48},{149,48},{112,48},{75,48},{37,48},{0,48},
                                                     {112,64},{149,64},{187,64},{224,64},
-                                {224,0},{187,0},{149,0},{112,0},{75,0},{37,0},       
+                                {224,0},{187,0},{149,0},{112,0},{75,0},{37,0},
                                 {0,16},{37,16},{75,16},{112,16},{149,16},{187,16},{224,16},
                                 {224,32},{187,32},{149,32},{112,32},{75,32},{37,32},{0,32},
                                     {37,48},{75,48},{112,48},{149,48},{187,48},{224,48},
@@ -169,6 +171,24 @@ void keyboard_post_init_kb(void) {
 
 #endif
 
+bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_user(keycode, record)) { return false; }
+    if (record->event.pressed) {
+        SEGGER_RTT_printf(0,"Demo Init!\r\n");
+    }
+    return true;
+}
+uint32_t tt = 0;
+void housekeeping_task_kb(void) {
+    if (tt == 0) {
+        tt = timer_read32();
+    }
+    uint32_t timer_now = timer_read32();
+    if (TIMER_DIFF_32(timer_now, tt) >= 500) {
+        SEGGER_RTT_printf(0,"Demo Running!\r\n");
+        tt = timer_read32();
+    }
+};
 
 #ifndef BIU_BLE5_ENABLE
 void keyboard_pre_init_kb(void) {
@@ -176,7 +196,10 @@ void keyboard_pre_init_kb(void) {
     writePin(RGB_BLE_SW, 1);
 }
 void keyboard_post_init_kb(void) {
+    SEGGER_RTT_Init();
+#ifdef RGB_MATRIX_ENABLE
     rgb_matrix_reload_from_eeprom();
+#endif
 #ifdef CONSOLE_ENABLE
     debug_enable=true;
     // debug_matrix=true;
