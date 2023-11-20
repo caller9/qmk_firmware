@@ -31,6 +31,7 @@ A creative coder.
 | yr80pro       | 0xAA96    | 0xAA10     | 8k report rate                        | &check;           |
 | yr67mag_v1    | 0xAA96    | 0xAA11     | magnetic                              | &check;           |
 | yr80ble       | 0xAA96    | 0xAA12     | BLE 5.0 Dual mode                     | &check;           |
+| F6501         | 0xAA96    | 0xAA13     | BLE 5.0 Dual mode                     | &check;           |
 
 
 
