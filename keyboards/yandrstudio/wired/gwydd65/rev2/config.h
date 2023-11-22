@@ -18,6 +18,7 @@
 #ifdef RGBLIGHT_ENABLE
 
 #    define RGB_DI_PIN B4
+#    define WS2812_DI_PIN B4
 #    define RGBLED_NUM 20
 #    define DRIVER_LED_TOTAL RGBLED_NUM
 #    define RGBLIGHT_LIMIT_VAL 180
