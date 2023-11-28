@@ -195,7 +195,8 @@ A creative coder.
 | studiox-c800    | 0xAA96    | 0xAA57                   |                                  | &quest;           |
 | wyse80(ptq)     | 0xAA96    | 0xAA58                   |                                  | &quest;           |
 | soul80          | 0xAA96    | 0xAA59                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
+| yuan75          | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
