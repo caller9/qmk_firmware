@@ -11,17 +11,17 @@ RGB_MATRIX_DRIVER = ws2812
 # QUANTUM_SRC += rgb_matrix_layer.c
 WS2812_DRIVER = pwm
 
-# CUSTOM_MATRIX = lite
-# QUANTUM_SRC += matrix.c
+CUSTOM_MATRIX = lite
+QUANTUM_SRC += matrix_sp.c
 
 SPLIT_KEYBOARD = yes
-SERIAL_DRIVER = bitbang
+SERIAL_DRIVER = usart
 
 # NO_USB_STARTUP_CHECK = yes
-CONSOLE_ENABLE = yes         # Console for debug
-KEYBOARD_SHARED_EP = yes        # Free up some extra endpoints - needed if console+mouse+extra
-QUANTUM_SRC += SEGGER_RTT_printf.c SEGGER_RTT.c
-ALLOW_WARNINGS = yes
+# CONSOLE_ENABLE = yes         # Console for debug
+# KEYBOARD_SHARED_EP = yes        # Free up some extra endpoints - needed if console+mouse+extra
+# QUANTUM_SRC += SEGGER_RTT_printf.c SEGGER_RTT.c
+# ALLOW_WARNINGS = yes
 
 # RGBLIGHT_ENABLE = yes
 # RGBLIGHT_DRIVER = WS2812

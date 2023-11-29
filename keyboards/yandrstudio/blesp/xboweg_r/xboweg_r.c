@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "xboweg_r.h"
-#include "SEGGER_RTT.h"
+// #include "SEGGER_RTT.h"
 #include "wait.h"
+#include "usb_util.h"
 
 #ifdef BIU_BLE5_ENABLE
 #    include "biu_ble_common.h"
@@ -11,9 +12,9 @@
 
 bool is_keyboard_left(void) {
     return false;
-    // return true;
 }
 bool is_keyboard_master(void) {
+    usb_disconnect();
     return false;
 }
 
@@ -171,24 +172,24 @@ void keyboard_post_init_kb(void) {
 
 #endif
 
-bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
-    if (!process_record_user(keycode, record)) { return false; }
-    if (record->event.pressed) {
-        SEGGER_RTT_printf(0,"Demo Init!\r\n");
-    }
-    return true;
-}
-uint32_t tt = 0;
-void housekeeping_task_kb(void) {
-    if (tt == 0) {
-        tt = timer_read32();
-    }
-    uint32_t timer_now = timer_read32();
-    if (TIMER_DIFF_32(timer_now, tt) >= 500) {
-        SEGGER_RTT_printf(0,"Demo Running!\r\n");
-        tt = timer_read32();
-    }
-};
+// bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+//     if (!process_record_user(keycode, record)) { return false; }
+//     if (record->event.pressed) {
+//         SEGGER_RTT_printf(0,"Demo Init!\r\n");
+//     }
+//     return true;
+// }
+// uint32_t tt = 0;
+// void housekeeping_task_kb(void) {
+//     if (tt == 0) {
+//         tt = timer_read32();
+//     }
+//     uint32_t timer_now = timer_read32();
+//     if (TIMER_DIFF_32(timer_now, tt) >= 500) {
+//         SEGGER_RTT_printf(0,"Demo Running!\r\n");
+//         tt = timer_read32();
+//     }
+// };
 
 #ifndef BIU_BLE5_ENABLE
 void keyboard_pre_init_kb(void) {
@@ -196,7 +197,7 @@ void keyboard_pre_init_kb(void) {
     writePin(RGB_BLE_SW, 1);
 }
 void keyboard_post_init_kb(void) {
-    SEGGER_RTT_Init();
+    // SEGGER_RTT_Init();
 #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_reload_from_eeprom();
 #endif

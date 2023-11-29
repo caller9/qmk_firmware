@@ -8,7 +8,7 @@
 #define PRODUCT_ID 0xAA51
 #define DEVICE_VER 0x0001
 #define MANUFACTURER "XBOW_Y&R"
-#define PRODUCT "Butterfly"
+#define PRODUCT "Butterfly_R"
 
 /* key matrix size */
 #define MATRIX_ROWS 10
@@ -31,10 +31,13 @@
 #define HOLD_ON_OTHER_KEY_PRESS
 #define TAP_HOLD_CAPS_DELAY 200
 
+#    define BOOTMAGIC_LITE_ROW 5
+#    define BOOTMAGIC_LITE_COLUMN 6
+
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
-// #    define RGB_MATRIX_SPLIT {30, 30}
+#    define RGB_MATRIX_SPLIT {30, 30}
 
 #    define WS2812_DI_PIN B9
 #    define RGB_MATRIX_LED_COUNT 60
@@ -114,23 +117,20 @@
 
 #   define MASTER_LEFT
 
-#   define SOFT_SERIAL_PIN B13
-#   define SERIAL_DEBUG
+#   define SERIAL_USART_TX_PIN A2
+#   define SERIAL_USART_DRIVER SD2
 
-#   define SELECT_SOFT_SERIAL_SPEED 3
-#    define SERIAL_DELAY_BLIP_TIME 5
+// #   define SERIAL_DEBUG
 
-// // #   define SPLIT_TRANSPORT_MIRROR
+#   define SPLIT_TRANSPORT_MIRROR
 
 // #   define SPLIT_USB_DETECT
 
-// #   define SPLIT_MODS_ENABLE
-// #   define SPLIT_LAYER_STATE_ENABLE
-// #   define SPLIT_LED_STATE_ENABLE
+#   define SPLIT_MODS_ENABLE
+#   define SPLIT_LAYER_STATE_ENABLE
+#   define SPLIT_LED_STATE_ENABLE
 
-// #    define SPLIT_WATCHDOG_ENABLE
-// #define SPLIT_WATCHDOG_TIMEOUT 1000
-// #define SPLIT_USB_TIMEOUT 500
+#    define SPLIT_WATCHDOG_ENABLE
 
 #endif
 
@@ -151,23 +151,9 @@
 // USB Power
 #define USB_PWR_READ
 #define USB_PWR_READ_PIN B15
-// #define ADVANCE_SLEEP_MODE_V1_NO_DP_UP_ESD
+#define ADVANCE_SLEEP_MODE_V1_NO_DP_UP_ESD
 
 // ADC SETTING
 #define SAMPLE_BATTERY
-#define BATTERY_LEVEL_PIN A2
+#define BATTERY_LEVEL_PIN A1
 #define USE_BAT_MAP_V2
-
-
-#ifdef RGBLIGHT_ENABLE
-#    define WS2812_DI_PIN B12
-#    define RGBLED_NUM 82
-#    define RGBLIGHT_SLEEP
-#    define RGBLIGHT_VAL_STEP 10
-
-// FACTORY_TEST
-#    define RGBLIGHT_LIMIT_VAL 24
-#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RGB_TEST)
-#    define RGBLIGHT_EFFECT_RGB_TEST
-
-#endif
