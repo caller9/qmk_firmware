@@ -15,7 +15,7 @@ WS2812_DRIVER = pwm
 # QUANTUM_SRC += matrix.c
 
 SPLIT_KEYBOARD = yes
-SERIAL_DRIVER = bitbang
+SERIAL_DRIVER = usart
 
 # NO_USB_STARTUP_CHECK = yes
 CONSOLE_ENABLE = yes         # Console for debug
