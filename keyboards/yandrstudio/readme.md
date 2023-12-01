@@ -196,7 +196,8 @@ A creative coder.
 | wyse80(ptq)     | 0xAA96    | 0xAA58                   |                                  | &quest;           |
 | soul80          | 0xAA96    | 0xAA59                   |                                  | &quest;           |
 | yuan75          | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
+| mxk-t75         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
