@@ -3,4 +3,4 @@
 
 #pragma once
 
-#define PRODUCT         "RetroF"
+#define PRODUCT         "Retro70F"

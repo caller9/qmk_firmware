@@ -15,8 +15,8 @@
 //                               0      1       2       3       4       5       6       7       8       9       10      11      12      13      14      15
 #define MATRIX_COL_PINS       { NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, A4,     A3 }
 #define MATRIX_ROW_PINS       { A5,     A6,     A7,     B0,     B1 }
-#define MATRIX_COL_PINS_RIGHT { B14,    B15,    A8,     A9,     NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN, NO_PIN }
-#define MATRIX_ROW_PINS_RIGHT { A7,     B1,     B0,     B2,     NO_PIN }
+#define MATRIX_COL_PINS_RIGHT { B1,     B2,     B10,    B11,    B12,    A0,     A2,     A1,     A3,     A4,     A5,     A6,     A7,     B0,     NO_PIN, NO_PIN }
+#define MATRIX_ROW_PINS_RIGHT { B13,    NO_PIN, NO_PIN, NO_PIN, NO_PIN }
 
 #ifdef I_AM_LEFT
 #    define BOOTMAGIC_LITE_ROW 0
@@ -46,8 +46,6 @@
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
-#define FORCE_NKRO
-
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5
 
@@ -56,14 +54,8 @@
 
 #ifdef SPLIT_KEYBOARD
 
-#    define USE_SERIAL
-
-#    define SPLIT_USB_TIMEOUT 500
-
-#    define SELECT_SOFT_SERIAL_SPEED 5
-// #    define SERIAL_DELAY_BLIP_TIME 4
-
-#    define SOFT_SERIAL_PIN A10
+#   define SERIAL_USART_TX_PIN A9
+#   define SERIAL_USART_DRIVER SD1
 
 #    define SPLIT_TRANSPORT_MIRROR
 

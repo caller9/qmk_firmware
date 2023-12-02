@@ -4,6 +4,9 @@
 #pragma once
 #include_next <halconf.h>
 
+#undef HAL_USE_SERIAL
+#define HAL_USE_SERIAL TRUE
+
 #undef PAL_USE_CALLBACKS
 #define PAL_USE_CALLBACKS TRUE
 

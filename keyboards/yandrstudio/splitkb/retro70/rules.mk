@@ -24,7 +24,7 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = yes           # USB Nkey Rollover
 # CONSOLE_ENABLE = yes         # Console for debug
 SPLIT_KEYBOARD = yes
-SERIAL_DRIVER = bitbang
+SERIAL_DRIVER = usart
 
 CUSTOM_MATRIX = lite
 QUANTUM_SRC += matrix_io_sp.c
