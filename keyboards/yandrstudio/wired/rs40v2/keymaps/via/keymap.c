@@ -2,12 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-/*
-    K000, K001,  K002,  K003,  K004,  K005,  K006, K007, K008, K009, K010, K011, \
-    K100, K101,  K102,  K103,  K104,  K105,  K106, K107, K108, K109,       K111, \
-    K200, K201,  K202,  K203,  K204,  K205,  K206, K207, K208, K209, K110,       \
-    K300, K301,  K302,         K304,  K305,        K307,       K309, K310        \
-*/
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYOUT(
         // 0     1                                          6        7        8        9        10       11
@@ -31,3 +26,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS,KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS, KC_TRNS,  KC_TRNS,KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS,KC_TRNS,         KC_TRNS,KC_TRNS,           KC_TRNS,         KC_TRNS, KC_TRNS),
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!yr_factory_test) return true;
+    switch(keycode) {
+        case LT(1, KC_SPC):
+        case MO(1):
+            if (record->event.pressed) {
+                register_code(KC_SPC);
+            } else {
+                unregister_code(KC_SPC);
+            }
+            return false;
+        default:
+            break;
+    }
+    return true;
+}

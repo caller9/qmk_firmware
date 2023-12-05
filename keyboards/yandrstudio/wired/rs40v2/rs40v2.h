@@ -16,3 +16,5 @@
 	{ K200, K201,  K202,  K203,  K204,  K205,  K206, K207, K208,  K209, KC_NO, KC_NO  }, \
 	{ K300, K301,  K302,  KC_NO, K304,  K305,  KC_NO,K307, KC_NO, K309, K310,  KC_NO  }  \
 }
+
+extern bool yr_factory_test;
