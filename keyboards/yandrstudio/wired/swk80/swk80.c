@@ -3,6 +3,13 @@
 
 #include "swk80.h"
 
+#include "raw_hid.h"
+bool yr_factory_test = false;
+uint32_t rgb_t_itv = 1000;
+uint32_t rgb_t_timer = 0;
+uint8_t rgb_t_pos = 0;
+uint8_t rgb_t_v = 5;
+
 #ifdef RGB_MATRIX_ENABLE
 
 #include "rgb_matrix_layer.h"
@@ -67,10 +74,6 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     rgb_matrix_adv_blink_layer_repeat_helper();
     rgb_matrix_adv_set_layer_state(0, host_keyboard_led_state().caps_lock);
 
-    // If not enabled, then nothing else will actually set the LEDs...
-    if (!rgb_matrix_is_enabled()) {
-        rgb_task_state = FLUSHING;
-    }
     uint8_t cent_num = 85;
     rgb_matrix_ws2812_array[cent_num-1].r = rgb_matrix_ws2812_array[cent_num].r;
     rgb_matrix_ws2812_array[cent_num-1].g = rgb_matrix_ws2812_array[cent_num].g;
@@ -84,6 +87,32 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     rgb_matrix_ws2812_array[cent_num+2].r = rgb_matrix_ws2812_array[cent_num].r;
     rgb_matrix_ws2812_array[cent_num+2].g = rgb_matrix_ws2812_array[cent_num].g;
     rgb_matrix_ws2812_array[cent_num+2].b = rgb_matrix_ws2812_array[cent_num].b;
+
+    if (yr_factory_test) {
+        if (rgb_t_timer == 0) rgb_t_timer = timer_read32();
+        if (timer_elapsed32(rgb_t_timer) > rgb_t_itv) {
+            rgb_t_timer = timer_read32();
+            rgb_t_pos = (rgb_t_pos + 1) % 3;
+        }
+        switch (rgb_t_pos) {
+            case 0:
+                rgb_matrix_set_color_all(rgb_t_v, 0, 0);
+                break;
+            case 1:
+                rgb_matrix_set_color_all(0, rgb_t_v, 0);
+                break;
+            case 2:
+                rgb_matrix_set_color_all(0, 0, rgb_t_v);
+            default:
+                break;
+
+        }
+    }
+
+    // If not enabled, then nothing else will actually set the LEDs...
+    if (!rgb_matrix_is_enabled()) {
+        rgb_task_state = FLUSHING;
+    }
     return true;
 }
 
@@ -94,3 +123,19 @@ void keyboard_post_init_kb(void) {
 }
 
 #endif
+
+bool via_command_kb(uint8_t *data, uint8_t length) {
+    uint8_t *command_id = &(data[0]);
+    uint8_t *command_data = &(data[1]);
+    if (*command_id == 0x03 && command_data[0] == 0x96) {
+        dprintf(">>Recv a pkg with cmd_data1: [%d]!!\n", command_data[1]);
+        if (command_data[1] == 0x96) { // Factory test
+            if (!yr_factory_test) {
+                yr_factory_test = true;
+            }
+            raw_hid_send(data, length);
+        }
+        return true;
+    }
+    return false;
+}
