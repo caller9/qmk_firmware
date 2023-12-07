@@ -13,6 +13,13 @@ RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 QUANTUM_SRC += rgb_matrix_layer.c
 
-CHIBIOS_DEV_VERSION = yes
+# DEBOUNCE_TYPE = sym_eager_pk
 
-# SIGNALRGB_SUPPORT_ENABLE = yes
+# for test
+# RGBLIGHT_ENABLE = yes
+# RGBLIGHT_DRIVER = WS2812
+
+# CONSOLE_ENABLE = yes         # Console for debug
+# KEYBOARD_SHARED_EP = yes    # Free up some extra endpoints - needed if console+mouse+extra
+
+# ALLOW_WARNINGS = yes

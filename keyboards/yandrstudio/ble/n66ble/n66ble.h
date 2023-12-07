@@ -20,12 +20,7 @@
 }
 
 enum keyboard_keycodes {
-#ifdef VIA_ENABLE
-    LOCK_GUI = USER00,
-#else
-    LOCK_GUI = SAFE_RANGE,
-#endif
-
+    LOCK_GUI = QK_KB,
 #ifdef RGB_MATRIX_ENABLE
     BAT_SHOW,
 #endif
@@ -33,12 +28,7 @@ enum keyboard_keycodes {
     KC_MISSION_CONTROL_MAC,
     KC_LAUNCHPAD_MAC,
     KC_KEY_RGB,
-    KC_HEAD_RGB,
-#ifdef VIA_ENABLE
-    NEW_SAFE_RANGE = SAFE_RANGE  // Important!
-#else
-    NEW_SAFE_RANGE   // Important!
-#endif
+    KC_HEAD_RGB
 };
 
 #define MKC_LG     LOCK_GUI

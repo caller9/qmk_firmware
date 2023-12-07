@@ -8,7 +8,7 @@
 #define PRODUCT_ID      0xAAB1
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "Y&R"
-#define PRODUCT         "Answer65"
+#define PRODUCT         "As65"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -58,3 +58,6 @@
 // ADC SETTING
 #define SAMPLE_BATTERY
 #define BATTERY_LEVEL_SW_PIN B1
+
+
+// #define FACTORY_TEST

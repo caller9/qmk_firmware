@@ -18,7 +18,7 @@
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
-#    define RGB_DI_PIN A7
+#    define WS2812_DI_PIN A7
 #    define RGBLED_NUM 94
 #    define RGB_MATRIX_LED_COUNT RGBLED_NUM
 

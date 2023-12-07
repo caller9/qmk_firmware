@@ -39,7 +39,7 @@ typedef struct {
 } qk_kc;
 
 
-void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_tab_ble_on_finished(tap_dance_state_t *state, void *user_data) {
     if (!state->pressed || state->interrupted) return;
     qk_kc * p_keycode = (qk_kc *)user_data;
     uint16_t keycode = p_keycode->kc;
@@ -95,7 +95,7 @@ void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
         { .fn = {NULL, user_fn_on_dance_finished, NULL}, .user_data = (void *)&(qk_kc){kc}, }
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_BLE_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BLE_TOG, dance_tab_ble_on_finished),
     [TD_FN_USB_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(USB_TOG, dance_tab_ble_on_finished),
     [TD_FN_BAU_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BAU_TOG, dance_tab_ble_on_finished),
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  KC_LCTL, KC_LALT, KC_SPC,                                              MO(1),   KC_LEFT, KC_DOWN,          KC_RGHT),
     [1] = LAYOUT(
         KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,     KC_F7,       KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_DEL,  KC_TRNS,
-        KC_TRNS, BL_SW_0, BL_SW_1, BL_SW_2, BL_SW_3, BAU_TOG, CLICKY_UP, CLICKY_DOWN, AU_TOG,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, BL_SW_0, BL_SW_1, BL_SW_2, BL_SW_3, BAU_TOG, CK_UP,     CK_DOWN,     AU_TOGG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, BLE_TOG, USB_TOG, BLE_DEL, BLE_CLR, BLE_OFF, KC_TRNS,   KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS,
         KC_TRNS, RGB_TOG, RGB_MOD, RGB_RMOD,RGB_VAI, RGB_VAD, RGB_HUI,   RGB_HUD,     RGB_SAI, RGB_SAD, BAT_SHOW,TH_RGB,           KC_TRNS, KC_TRNS,
                  KC_TRNS, KC_TRNS, KC_TRNS,                                                    KC_TRNS, KC_TRNS, TK_RGB,           KC_TRNS),

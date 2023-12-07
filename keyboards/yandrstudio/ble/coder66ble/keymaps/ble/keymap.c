@@ -73,7 +73,7 @@ typedef struct {
     uint16_t kc;
 } qk_kc;
 
-void dance_layer_to_layer_count_finsh(qk_tap_dance_state_t *state, void *user_data) {
+void dance_layer_to_layer_count_finsh(tap_dance_state_t *state, void *user_data) {
     uint8_t cur_layer = get_highest_layer(layer_state);
     if (state->count == 1) {
         layer_on(2);
@@ -88,7 +88,7 @@ void dance_layer_to_layer_count_finsh(qk_tap_dance_state_t *state, void *user_da
     }
 }
 
-void dance_layer_to_layer_count_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_layer_to_layer_count_reset(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         layer_off(2);
     } else if (state->count == 2) {
@@ -99,7 +99,7 @@ void dance_layer_to_layer_count_reset(qk_tap_dance_state_t *state, void *user_da
 }
 
 
-void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_tab_ble_on_finished(tap_dance_state_t *state, void *user_data) {
     if (!state->pressed || state->interrupted) return;
     qk_kc * p_keycode = (qk_kc *)user_data;
     uint16_t keycode = p_keycode->kc;
@@ -149,7 +149,7 @@ void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
         { .fn = {NULL, user_fn_on_dance_finished, NULL}, .user_data = (void *)&(qk_kc){kc}, }
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_LAYER_TOG] = ACTION_TAP_DANCE_FN_ADVANCED(NULL,dance_layer_to_layer_count_finsh, dance_layer_to_layer_count_reset),
     [TD_FN_BLE_TOG] = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BLE_TOG, dance_tab_ble_on_finished),
     [TD_FN_USB_TOG] = ACTION_TAP_DANCE_FN_ADVANCED_BLE(USB_TOG, dance_tab_ble_on_finished),

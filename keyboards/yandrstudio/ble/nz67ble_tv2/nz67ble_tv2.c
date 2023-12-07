@@ -164,7 +164,7 @@ void keyboard_post_init_kb(void) {
     kb_cstm_config.underground_rgb_sw = eeconfig_read_kb();
     rgb_matrix_reload_from_eeprom();
     rgb_matrix_layers = my_rgb_matrix_layers;
-    debug_enable = true;
+    // debug_enable = true;
 }
 #endif
 

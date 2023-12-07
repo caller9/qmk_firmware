@@ -15,14 +15,13 @@
  */
 #pragma once
 
-#include "config_common.h"
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAA65
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    SUKI_Y&R
-#define PRODUCT         SUKI68
+#define MANUFACTURER    "SUKI_Y&R"
+#define PRODUCT         "SUKI68"
 
 /* key matrix size */
 #define MATRIX_ROWS 5

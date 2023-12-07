@@ -32,11 +32,5 @@
 }
 
 enum keyboard_keycodes {
-#ifdef VIA_ENABLE
-    BAT_SHOW = USER00, // ble
-    NEW_SAFE_RANGE = SAFE_RANGE  // Important!
-#else
-    BAT_SHOW = SAFE_RANGE, // ble
-    NEW_SAFE_RANGE   // Important!
-#endif
+    BAT_SHOW = QK_USER_0
 };

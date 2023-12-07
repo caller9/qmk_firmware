@@ -8,16 +8,31 @@
 #include "distributors.h"
 #include "usb_main.h"
 
-#define BLE_TOG     KC_F15  // 打开蓝牙
-#define USB_TOG     KC_F16  // 打开USB
-#define BAU_TOG     KC_F17  // 蓝牙和USB之间切换
-#define BL_SW_0     KC_F18  // 开启蓝牙通道0（需要打开蓝牙的条件下才行）
-#define BL_SW_1     KC_F19  // 开启蓝牙通道1（需要打开蓝牙的条件下才行）
-#define BL_SW_2     KC_F20  // 开启蓝牙通道2（需要打开蓝牙的条件下才行）
-#define BL_SW_3     KC_F21  // 开启蓝牙通道3（需要打开蓝牙的条件下才行）
-#define BLE_DEL     KC_F22  // 删除当前蓝牙绑定
-#define BLE_CLR     KC_F23  // 清空所有蓝牙绑定
-#define BLE_OFF     KC_F24  // 关闭蓝牙连接
+enum user_keycodes_bt {
+    BT_1 = QK_KB_0+7,
+    BT_2,BT_3,
+    BT_4,BT_5,BT_6,BT_7,
+    BT_8,BT_9,BT_10
+};
+#ifdef FACTORY_TEST
+enum user_keycodes_ft {
+    FT_BT_1 = BT_10+1,
+    FT_BT_2,
+    FT_BT_3
+};
+#endif
+
+#define BLE_TOG     BT_1  // 打开蓝牙
+#define USB_TOG     BT_2  // 打开USB
+#define BAU_TOG     BT_3  // 蓝牙和USB之间切换
+#define BL_SW_0     BT_4  // 开启蓝牙通道0（需要打开蓝牙的条件下才行）
+#define BL_SW_1     BT_5  // 开启蓝牙通道1（需要打开蓝牙的条件下才行）
+#define BL_SW_2     BT_6  // 开启蓝牙通道2（需要打开蓝牙的条件下才行）
+#define BL_SW_3     BT_7  // 开启蓝牙通道3（需要打开蓝牙的条件下才行）
+#define BLE_DEL     BT_8  // 删除当前蓝牙绑定
+#define BLE_CLR     BT_9  // 清空所有蓝牙绑定
+#define BLE_OFF     BT_10 // 关闭蓝牙连接
+
 
 #ifdef TAP_DANCE_ENABLE
 // Tap Dance declarations
@@ -41,7 +56,7 @@ typedef struct {
 
 
 
-void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_tab_ble_on_finished(tap_dance_state_t *state, void *user_data) {
     if (!state->pressed || state->interrupted) return;
     qk_kc * p_keycode = (qk_kc *)user_data;
     uint16_t keycode = p_keycode->kc;
@@ -97,7 +112,7 @@ void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
         { .fn = {NULL, user_fn_on_dance_finished, NULL}, .user_data = (void *)&(qk_kc){kc}, }
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_BLE_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BLE_TOG, dance_tab_ble_on_finished),
     [TD_FN_USB_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(USB_TOG, dance_tab_ble_on_finished),
     [TD_FN_BAU_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BAU_TOG, dance_tab_ble_on_finished),
@@ -139,13 +154,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_E,          KC_R,   KC_T, KC_Y, KC_U, KC_I,          KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,
         KC_CAPS, KC_A,    KC_S,    KC_D,          KC_F,   KC_G, KC_H, KC_J, KC_K,          KC_L,    KC_SCLN, KC_QUOT, KC_ENT,
         KC_LSFT, KC_Z,    KC_X,    KC_C,          KC_V,   KC_B, KC_N, KC_M, KC_COMM,       KC_DOT,  KC_SLSH, KC_RSFT, KC_UP,   KC_DEL,
+#ifdef FACTORY_TEST
+        KC_LCTL, KC_LGUI, KC_LALT, FT_BT_1,       FT_BT_2,                  FT_BT_3,       KC_RALT, KC_SPC,  KC_LEFT, KC_DOWN, KC_RGHT),
+#else
         KC_LCTL, KC_LGUI, KC_LALT, LT(1, KC_SPC), KC_SPC,                   LT(1, KC_SPC), KC_RALT, MO(1),   KC_LEFT, KC_DOWN, KC_RGHT),
+#endif
     [1] = LAYOUT(
         KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,    KC_F11,  KC_F12,  KC_DEL,
-        KC_TRNS, BL_SW_0, BL_SW_1, BL_SW_2, BL_SW_3, BAU_TOG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BTSH,   KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, BL_SW_0, BL_SW_1, BL_SW_2, BL_SW_3, BAU_TOG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BTSH,   KC_TRNS, KC_TRNS, NK_TOGG,
         KC_TRNS, BLE_TOG, USB_TOG, BLE_DEL, BLE_CLR, BLE_OFF, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS,
         KC_TRNS, RGB_TOG, RGB_MOD, RGB_RMOD,RGB_VAI, RGB_VAD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_KG_T,  KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_LG,   KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS),
+        KC_TRNS, MKC_LG,  KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS),
     [2] = LAYOUT(
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -159,3 +178,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)
 };
+
+#ifdef FACTORY_TEST
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case FT_BT_1:
+            if (record->event.pressed) {
+                tap_code(KC_SPC);
+                bluetooth_switch_one(1);
+                ble_channle_update(true);
+            }
+            return false;
+        case FT_BT_2:
+            if (record->event.pressed) {
+                tap_code(KC_SPC);
+                bluetooth_switch_one(2);
+                ble_channle_update(true);
+            }
+            return false;
+        case FT_BT_3:
+            if (record->event.pressed) {
+                tap_code(KC_SPC);
+                bluetooth_switch_one(3);
+                ble_channle_update(true);
+            }
+            return false;
+    }
+    return true;
+}
+#endif

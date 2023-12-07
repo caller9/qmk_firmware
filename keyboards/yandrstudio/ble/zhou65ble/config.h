@@ -15,14 +15,12 @@
  */
 #pragma once
 
-#include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAAC5
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    ZHOU_Y&R
-#define PRODUCT         zhou65ble
+#define MANUFACTURER    "ZHOU_Y&R"
+#define PRODUCT         "zhou65ble"
 
 // enable the nkro when using the VIA.
 #define FORCE_NKRO
@@ -54,4 +52,3 @@
 #define SAMPLE_BATTERY
 #define BATTERY_LEVEL_SW_PIN B1
 #define SLEEP_IN_STOP_MATRIX_LOW
-

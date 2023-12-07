@@ -3,14 +3,13 @@
 
 #pragma once
 
-#include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID 0xAA96
 #define PRODUCT_ID 0xAA0E
 #define DEVICE_VER 0x0001
 #define MANUFACTURER "Y&R"
-#define PRODUCT "PieStar64"
+// #define PRODUCT "PieStar64"
+#define PRODUCT "NZ64V3"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -47,7 +46,7 @@
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
-#    define RGB_DI_PIN B5
+#    define WS2812_DI_PIN B5
 // 67 key  32 under
 #    define RGB_MATRIX_LED_COUNT 99
 
@@ -116,6 +115,40 @@
 
 #endif
 
+
+
+#ifdef RGBLIGHT_ENABLE
+#    define FACTORY_TEST
+#    define WS2812_DI_PIN B5
+#    define RGBLED_NUM 99
+#    define RGBLIGHT_SLEEP
+#    define RGBLIGHT_VAL_STEP 10
+
+#    ifdef FACTORY_TEST
+
+#    define RGBLIGHT_LIMIT_VAL 24
+#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RGB_TEST)
+#    define RGBLIGHT_EFFECT_RGB_TEST
+
+#    else
+
+#    define RGBLIGHT_LIMIT_VAL 200
+#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RAINBOW_SWIRL+5)
+#    define RGBLIGHT_EFFECT_BREATHING
+#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
+#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#    define RGBLIGHT_EFFECT_SNAKE
+#    define RGBLIGHT_EFFECT_KNIGHT
+#    define RGBLIGHT_EFFECT_CHRISTMAS
+#    define RGBLIGHT_EFFECT_STATIC_GRADIENT
+#    define RGBLIGHT_EFFECT_RGB_TEST
+#    define RGBLIGHT_EFFECT_ALTERNATING
+#    define RGBLIGHT_EFFECT_TWINKLE
+
+#    endif
+
+#endif
+
 #define HOLD_ON_OTHER_KEY_PRESS
 
 // for ble
@@ -139,3 +172,4 @@
 // ADC SETTING
 #define SAMPLE_BATTERY
 #define BATTERY_LEVEL_SW_PIN B1
+#define USE_BAT_MAP_V1

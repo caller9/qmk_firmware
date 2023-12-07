@@ -22,7 +22,7 @@ enum {
     TD_FN_LAYER_TOG
 };
 
-void dance_layer_to_layer_count_finsh(qk_tap_dance_state_t *state, void *user_data) {
+void dance_layer_to_layer_count_finsh(tap_dance_state_t *state, void *user_data) {
     uint8_t cur_layer = get_highest_layer(layer_state);
     if (state->count == 1) {
         layer_on(2);
@@ -37,7 +37,7 @@ void dance_layer_to_layer_count_finsh(qk_tap_dance_state_t *state, void *user_da
     }
 }
 
-void dance_layer_to_layer_count_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_layer_to_layer_count_reset(tap_dance_state_t *state, void *user_data) {
     if (state->count == 1) {
         layer_off(2);
     } else if (state->count == 2) {
@@ -49,7 +49,7 @@ void dance_layer_to_layer_count_reset(qk_tap_dance_state_t *state, void *user_da
 
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_LAYER_TOG] = ACTION_TAP_DANCE_FN_ADVANCED(NULL,dance_layer_to_layer_count_finsh, dance_layer_to_layer_count_reset)
 };
 

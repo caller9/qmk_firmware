@@ -21,23 +21,23 @@
 #include "usb_main.h"
 
 enum keyboard_keycodes {
-    LOCK_GUI = QK_USER,
+    LOCK_GUI = QK_KB,
 #ifdef RGB_MATRIX_ENABLE
     KC_KEY_UNDER_RGBSW,
     BAT_SHOW,
 #endif
-    TOG_MACOS_KEYMAP,
-    KC_MISSION_CONTROL,
-    KC_LAUNCHPAD,
+    TOG_MACOS_KEYMAP_MAC,
+    KC_MISSION_CONTROL_MAC,
+    KC_LAUNCHPAD_MAC,
     BT_1,BT_2,BT_3,
     BT_4,BT_5,BT_6,BT_7,
     BT_8,BT_9,BT_10
 };
 
-#define KC_LG     LOCK_GUI
-#define KC_MACOS  TOG_MACOS_KEYMAP
-#define KC_MCTL   KC_MISSION_CONTROL
-#define KC_LPAD   KC_LAUNCHPAD
+#define MKC_LG     LOCK_GUI
+#define MKC_MACOS  TOG_MACOS_KEYMAP_MAC
+#define MKC_MCTL   KC_MISSION_CONTROL_MAC
+#define MKC_LPAD   KC_LAUNCHPAD_MAC
 
 #ifdef RGB_MATRIX_ENABLE
 #   define RGB_KG_T  KC_KEY_UNDER_RGBSW
@@ -80,7 +80,7 @@ typedef struct {
 
 
 
-void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_tab_ble_on_finished(tap_dance_state_t *state, void *user_data) {
     if (!state->pressed || state->interrupted) return;
     qk_kc * p_keycode = (qk_kc *)user_data;
     uint16_t keycode = p_keycode->kc;
@@ -136,7 +136,7 @@ void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
         { .fn = {NULL, user_fn_on_dance_finished, NULL}, .user_data = (void *)&(qk_kc){kc}, }
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_BLE_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BLE_TOG, dance_tab_ble_on_finished),
     [TD_FN_USB_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(USB_TOG, dance_tab_ble_on_finished),
     [TD_FN_BAU_TOG]  = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BAU_TOG, dance_tab_ble_on_finished),
@@ -181,10 +181,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LCTL, KC_LGUI, KC_LALT, KC_VOLD,KC_VOLU, KC_SPC,                             KC_RALT, MO(1),            KC_LEFT, KC_DOWN, KC_RGHT),
 	[1] = LAYOUT(
 		KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,    KC_F11,  KC_F12,  KC_DEL, KC_TRNS,
-		KC_TRNS, BL_SW_0, BL_SW_1, BL_SW_2, BL_SW_3, BAU_TOG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BTSH,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+		KC_TRNS, BL_SW_0, BL_SW_1, BL_SW_2, BL_SW_3, BAU_TOG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BTSH,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 		KC_TRNS, BLE_TOG, USB_TOG, BLE_DEL, BLE_CLR, BLE_OFF, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,          KC_TRNS, KC_TRNS,
 		KC_TRNS, RGB_TOG, RGB_MOD, RGB_RMOD,RGB_VAI, RGB_VAD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_KG_T,           KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, LOCK_GUI,KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS,            KC_TRNS, KC_TRNS, KC_TRNS),
+        KC_TRNS, MKC_LG,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS,            KC_TRNS, KC_TRNS, KC_TRNS),
 	[2] = LAYOUT(
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
 		KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -231,24 +231,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 #endif
 
-        case KC_LG:
+        case MKC_LG:
             if (record->event.pressed) {
                 process_magic(GUI_TOG, record);
             }
             return false;
-        case KC_MACOS:
+        case MKC_MACOS:
             if (record->event.pressed) {
                 process_magic(CG_TOGG, record);
             }
             return false;
-        case KC_MCTL:
+        case MKC_MCTL:
             if (record->event.pressed) {
                 host_consumer_send(0x29F);
             } else {
                 host_consumer_send(0);
             }
             return false;
-        case KC_LPAD:
+        case MKC_LPAD:
             if (record->event.pressed) {
                 host_consumer_send(0x2A0);
             } else {

@@ -15,14 +15,14 @@
  */
 #pragma once
 
-#include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAA8A
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    SOUL_Y&R
-#define PRODUCT         soul70
+#define MANUFACTURER    "BL_Y&R"
+// #define MANUFACTURER    "SOUL_Y&R"
+#define PRODUCT         "Rule70"
+// #define PRODUCT         "soul70"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -58,7 +58,7 @@
 
 #ifdef RGBLIGHT_ENABLE
 
-#    define RGB_DI_PIN B5
+#    define WS2812_DI_PIN B5
 #    define RGBLED_NUM 6
 #    define RGBLIGHT_LIMIT_VAL 180
 #    define DRIVER_LED_TOTAL RGBLED_NUM

@@ -18,7 +18,7 @@
 #define DIODE_DIRECTION COL2ROW
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCE 8
+#define DEBOUNCE 5
 
 #define TAP_CODE_DELAY 15
 
@@ -52,7 +52,7 @@
 
 #ifdef RGBLIGHT_ENABLE
 
-#    define RGB_DI_PIN B15
+#    define WS2812_DI_PIN B15
 #    define RGBLED_NUM 11
 #    define RGBLIGHT_SLEEP
 #    define RGBLIGHT_VAL_STEP 5

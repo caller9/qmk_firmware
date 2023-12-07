@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "config_common.h"
-
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE
 

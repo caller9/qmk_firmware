@@ -20,7 +20,7 @@
 
 #if defined(RGBLIGHT_ENABLE) && defined(BIU_BLE5_ENABLE)
 
-const rgblight_segment_t PROGMEM bt_conn[] = RGBLIGHT_LAYER_SEGMENTS( {0, 6, HSV_BLUE} );          // 0
+const rgblight_segment_t PROGMEM bt_conn[] = RGBLIGHT_LAYER_SEGMENTS( {0, 6, HSV_GREEN} );          // 0
 const rgblight_segment_t PROGMEM bt_pair[] = RGBLIGHT_LAYER_SEGMENTS( {0, 6, HSV_BLUE} );          // 1
 const rgblight_segment_t PROGMEM usb_pair[] = RGBLIGHT_LAYER_SEGMENTS( {0, 6, HSV_WHITE} );        // 2
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS({0, 6, HSV_RED});   // 3

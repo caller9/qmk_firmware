@@ -2,7 +2,7 @@ uc65sble version 1.0
 ===
 
 A 65% bluetooth keyboard with rgb (keys).
-This keyboard use 16mhz HSE and STM32F401 and BRF52810 as MCU.
+This keyboard use 16mhz HSE and STM32F401 and NRF52810 as MCU.
 
 Keyboard Maintainer: https://github.com/jiaxin96
 Hardware Supported: uc65sble

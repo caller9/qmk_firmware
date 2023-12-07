@@ -30,6 +30,8 @@ static void shift_out_single(uint8_t value) {
         } else {
             writePinLow(SPI_MOSI_PIN_OF_595);
         }
+        // need wait when sym_eager_pk is used
+        wait_us(1);
         writePinHigh(SPI_SCK_PIN_OF_595);
     }
 }

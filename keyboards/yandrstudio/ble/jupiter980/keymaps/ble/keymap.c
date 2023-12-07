@@ -73,7 +73,7 @@ typedef struct {
 
 
 
-void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_tab_ble_on_finished(tap_dance_state_t *state, void *user_data) {
     if (!state->pressed || state->interrupted) return;
     qk_kc * p_keycode = (qk_kc *)user_data;
     uint16_t keycode = p_keycode->kc;
@@ -129,7 +129,7 @@ void dance_tab_ble_on_finished(qk_tap_dance_state_t *state, void *user_data) {
         { .fn = {NULL, user_fn_on_dance_finished, NULL}, .user_data = (void *)&(qk_kc){kc}, }
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_BLE_TOG] = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BLE_TOG, dance_tab_ble_on_finished),
     [TD_FN_USB_TOG] = ACTION_TAP_DANCE_FN_ADVANCED_BLE(USB_TOG, dance_tab_ble_on_finished),
     [TD_FN_BAU_TOG] = ACTION_TAP_DANCE_FN_ADVANCED_BLE(BAU_TOG, dance_tab_ble_on_finished),

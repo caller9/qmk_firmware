@@ -31,7 +31,7 @@ enum {
     TD_FN_LAYER_TOG,
 };
 
-void dance_layer_to_layer_count_pre(qk_tap_dance_state_t *state, void *user_data) {
+void dance_layer_to_layer_count_pre(tap_dance_state_t *state, void *user_data) {
     if (state->count <= 4) {
         layer_on(state->count);
         // reset_tap_dance(state);
@@ -39,7 +39,7 @@ void dance_layer_to_layer_count_pre(qk_tap_dance_state_t *state, void *user_data
     uprintf("press Fn %u times\n", state->count);
 }
 
-void dance_layer_to_layer_count_finsh(qk_tap_dance_state_t *state, void *user_data) {
+void dance_layer_to_layer_count_finsh(tap_dance_state_t *state, void *user_data) {
     if (state->count <= 4) {
         layer_off(state->count);
         // reset_tap_dance(state);
@@ -48,7 +48,7 @@ void dance_layer_to_layer_count_finsh(qk_tap_dance_state_t *state, void *user_da
 }
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [TD_FN_LAYER_TOG] = ACTION_TAP_DANCE_FN_ADVANCED(NULL,dance_layer_to_layer_count_pre,dance_layer_to_layer_count_finsh)
 };
 

@@ -15,14 +15,12 @@
  */
 #pragma once
 
-#include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAA82
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    GUA_Y&R
-#define PRODUCT         Binary68
+#define MANUFACTURER    "GUA_Y&R"
+#define PRODUCT         "Binary68"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -56,11 +54,22 @@
 
 #ifdef RGBLIGHT_ENABLE
 
-#    define RGB_DI_PIN B4
+#    define WS2812_DI_PIN B4
 #    define RGBLED_NUM 8
 #    define RGBLIGHT_LIMIT_VAL 180
 #    define DRIVER_LED_TOTAL RGBLED_NUM
-#    define RGBLIGHT_ANIMATIONS
+
+#    define RGBLIGHT_EFFECT_BREATHING
+#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
+#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#    define RGBLIGHT_EFFECT_SNAKE
+#    define RGBLIGHT_EFFECT_KNIGHT
+#    define RGBLIGHT_EFFECT_CHRISTMAS
+#    define RGBLIGHT_EFFECT_STATIC_GRADIENT
+#    define RGBLIGHT_EFFECT_RGB_TEST
+#    define RGBLIGHT_EFFECT_ALTERNATING
+#    define RGBLIGHT_EFFECT_TWINKLE
+#    define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_RAINBOW_MOOD
 
 #    define WS2812_PWM_DRIVER PWMD3  // default: PWMD2
 #    define WS2812_PWM_CHANNEL 1  // default: 2
@@ -69,12 +78,6 @@
 #    define WS2812_DMA_CHANNEL 5  // DMA Channel for TIMx_UP, see the respective reference manual for the appropriate values for your MCU.
 
 #endif
-
-// enable the nkro when using the VIA.
-#define FORCE_NKRO
-
-// fix VIA RGB_light
-#define VIA_HAS_BROKEN_KEYCODES
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5

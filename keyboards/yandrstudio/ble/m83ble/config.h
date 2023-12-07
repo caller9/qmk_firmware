@@ -15,8 +15,6 @@
  */
 #pragma once
 
-#include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAA62
@@ -56,7 +54,7 @@
 
 #ifdef RGBLIGHT_ENABLE
 
-#    define RGB_DI_PIN B4
+#    define WS2812_DI_PIN B4
 #    define RGBLED_NUM 87
 #    define RGBLIGHT_LIMIT_VAL 180
 #    define DRIVER_LED_TOTAL RGBLED_NUM
@@ -84,9 +82,6 @@
 
 #define LED_CAPS_LOCK_PIN    A15
 #define LED_PIN_ON_STATE     1
-
-// enable the nkro when using the VIA.
-#define FORCE_NKRO
 
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE 5

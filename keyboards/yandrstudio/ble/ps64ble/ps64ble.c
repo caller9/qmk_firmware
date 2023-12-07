@@ -59,8 +59,8 @@ const rgb_matrix_adv_layer_segment_t PROGMEM bt_pair1_layer[] = RGB_MATRIX_LAYER
 const rgb_matrix_adv_layer_segment_t PROGMEM bt_pair2_layer[] = RGB_MATRIX_LAYER_SEGMENTS({40, 1, HSV_BLUE});   // 5
 const rgb_matrix_adv_layer_segment_t PROGMEM bt_pair3_layer[] = RGB_MATRIX_LAYER_SEGMENTS({39, 1, HSV_BLUE});   // 6
 const rgb_matrix_adv_layer_segment_t PROGMEM bt_pair4_layer[] = RGB_MATRIX_LAYER_SEGMENTS({38, 1, HSV_BLUE});   // 7
-const rgb_matrix_adv_layer_segment_t PROGMEM usb_pair_layer[] = RGB_MATRIX_LAYER_SEGMENTS({47, 1, HSV_BLUE});   // 8
-const rgb_matrix_adv_layer_segment_t PROGMEM usb_conn_layer[] = RGB_MATRIX_LAYER_SEGMENTS({47, 1, HSV_GREEN});  // 9
+const rgb_matrix_adv_layer_segment_t PROGMEM usb_pair_layer[] = RGB_MATRIX_LAYER_SEGMENTS({37, 1, HSV_BLUE});   // 8 // nlg:37 ble:47
+const rgb_matrix_adv_layer_segment_t PROGMEM usb_conn_layer[] = RGB_MATRIX_LAYER_SEGMENTS({37, 1, HSV_GREEN});  // 9 // nlg:37 ble:47
 const rgb_matrix_adv_layer_segment_t PROGMEM capslock_layer[] = RGB_MATRIX_LAYER_SEGMENTS({45, 1, HSV_RED});    // 10
 const rgb_matrix_adv_layer_segment_t PROGMEM bat_10_layer[]   = RGB_MATRIX_LAYER_SEGMENTS({12, 1, HSV_RED});     // 11
 const rgb_matrix_adv_layer_segment_t PROGMEM bat_20_layer[]   = RGB_MATRIX_LAYER_SEGMENTS({11, 2, HSV_GREEN});   // 12
@@ -187,8 +187,43 @@ void keyboard_post_init_kb(void) {
     kb_cstm_config.underground_rgb_sw = eeconfig_read_kb();
     rgb_matrix_reload_from_eeprom();
     rgb_matrix_layers = my_rgb_matrix_layers;
-    // debug_enable = true;
+#ifdef CONSOLE_ENABLE
+    debug_enable = true;
+#endif
 }
+
+// void housekeeping_task_kb(void) {
+//     static uint8_t rgb_charge_state = 0;
+//     static uint32_t rgb_charge_timer = 0;
+//     if (palReadLine(USB_PWR_READ_PIN)) {
+
+//         if (timer_elapsed32(rgb_charge_timer) >= 500) {
+//             rgb_charge_timer = timer_read32();
+//         } else {
+//             return;
+//         }
+
+//         if (rgb_charge_state == 0) {
+//             rgb_charge_state += 1;
+//             rgb_matrix_adv_unblink_all_batlayer_but_one_layer(15);
+//             rgb_matrix_adv_blink_layer_repeat(15, 500, 1);
+//         } else if (rgb_charge_state == 1) {
+//             rgb_charge_state += 1;
+//             rgb_matrix_adv_unblink_all_batlayer_but_one_layer(16);
+//             rgb_matrix_adv_blink_layer_repeat(16, 500, 1);
+//         } else if (rgb_charge_state == 2) {
+//             rgb_charge_state += 1;
+//             rgb_matrix_adv_unblink_all_batlayer_but_one_layer(17);
+//             rgb_matrix_adv_blink_layer_repeat(17, 500, 1);
+//         } else {
+//             rgb_charge_state = 0;
+//             rgb_matrix_adv_unblink_all_batlayer_but_one_layer(18);
+//             rgb_matrix_adv_blink_layer_repeat(18, 500, 1);
+//         }
+//     } else {
+//         rgb_charge_state = 0;
+//     }
+// }
 #endif
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
@@ -222,24 +257,29 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             return false;
 #endif
 
-        case KC_LG:
+        case MKC_LG:
             if (record->event.pressed) {
                 process_magic(GUI_TOG, record);
             }
             return false;
-        case KC_MACOS:
+        case MKC_TCG:
             if (record->event.pressed) {
                 process_magic(CG_TOGG, record);
             }
             return false;
-        case KC_MCTL:
+        case MKC_MACOS:
+            if (record->event.pressed) {
+                process_magic(AG_TOGG, record);
+            }
+            return false;
+        case MKC_MCTL:
             if (record->event.pressed) {
                 host_consumer_send(0x29F);
             } else {
                 host_consumer_send(0);
             }
             return false;
-        case KC_LPAD:
+        case MKC_LPAD:
             if (record->event.pressed) {
                 host_consumer_send(0x2A0);
             } else {

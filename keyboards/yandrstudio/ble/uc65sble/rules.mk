@@ -11,5 +11,3 @@ QUANTUM_SRC += matrix_io.c 74hc595_io.c rgb_matrix_layer.c
 
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
-
-CHIBIOS_DEV_VERSION = yes

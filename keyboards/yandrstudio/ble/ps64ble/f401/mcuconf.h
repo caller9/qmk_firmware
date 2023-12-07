@@ -18,12 +18,10 @@
 #undef STM32_PLLN_VALUE
 #undef STM32_PLLP_VALUE
 #undef STM32_PLLQ_VALUE
-#undef STM32_RTCPRE_VALUE
-#undef STM32_MCO2PRE
+#undef STM32_PPRE1
 
-#define STM32_PLLM_VALUE                    (STM32_HSECLK/1000000)
-#define STM32_PLLN_VALUE                    192
+#define STM32_PLLM_VALUE                    (STM32_HSECLK/2000000)
+#define STM32_PLLN_VALUE                    168
 #define STM32_PLLP_VALUE                    4
-#define STM32_PLLQ_VALUE                    4
-#define STM32_RTCPRE_VALUE                  8
-#define STM32_MCO2PRE                       STM32_MCO2PRE_DIV5
+#define STM32_PLLQ_VALUE                    7
+#define STM32_PPRE1                         STM32_PPRE1_DIV4

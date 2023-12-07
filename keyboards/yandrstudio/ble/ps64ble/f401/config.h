@@ -1,12 +1,10 @@
-// Copyright 2022 Y&R-Biu (@jiaxin96)
+// Copyright 2023 Y&R-Biu (@jiaxin96)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
 
-#include "config_common.h"
-
 /* RGN Matrix */
-#ifdef RGB_MATRIX_ENABLE
+#ifdef WS2812_DRIVER_PWM
 
 #    define WS2812_PWM_DRIVER PWMD3  // default: PWMD2
 #    define WS2812_PWM_CHANNEL 2  // default: 2

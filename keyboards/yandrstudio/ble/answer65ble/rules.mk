@@ -9,5 +9,3 @@ NKRO_ENABLE = yes           # USB Nkey Rollover
 
 CUSTOM_MATRIX = lite
 QUANTUM_SRC += matrix_io.c 74hc595_io.c
-
-CHIBIOS_DEV_VERSION = yes
