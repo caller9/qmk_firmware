@@ -197,7 +197,8 @@ A creative coder.
 | soul80          | 0xAA96    | 0xAA59                   |                                  | &quest;           |
 | yuan75          | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
 | mxk-t75         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
+| swk60           | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA5D                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
