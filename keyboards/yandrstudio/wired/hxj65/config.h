@@ -9,7 +9,7 @@
 #define PRODUCT_ID      0xAAFD
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "Y&R"
-#define PRODUCT         "HXJ65"
+#define PRODUCT         "US-T65"
 
 /* key matrix size */
 #define MATRIX_ROWS 5

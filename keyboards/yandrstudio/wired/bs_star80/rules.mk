@@ -26,5 +26,3 @@ WS2812_DRIVER = pwm         # WS2812 RGB Driver
 
 CUSTOM_MATRIX = lite
 SRC += matrix.c
-
-# OPT_DEFS += -DFACTORY_TEST

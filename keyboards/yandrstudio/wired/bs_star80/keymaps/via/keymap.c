@@ -33,17 +33,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                            KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)
 };
-#ifdef FACTORY_TEST
-extern uint8_t is_first_power;
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (is_first_power == 0) return true;
+    if (!yr_factory_test) return true;
     switch(keycode) {
+        case LT(1, KC_SPC):
         case MO(1):
             if (record->event.pressed) {
-                register_code(KC_APP);
+                register_code(KC_SPC);
             } else {
-                unregister_code(KC_APP);
+                unregister_code(KC_SPC);
             }
             return false;
         default:
@@ -51,4 +51,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-#endif
