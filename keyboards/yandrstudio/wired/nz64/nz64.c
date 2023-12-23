@@ -14,9 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "nz64.h"
-
-
-
+#include "process_magic.h"
 
 #ifdef RGB_MATRIX_ENABLE
 
@@ -61,7 +59,7 @@ led_config_t g_led_config = {
     }
 };
 
-void rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
+bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     if (rgb_matrix_is_enabled()) {
         if (kb_cums.underground_rgb_sw == 1) {
             for (uint8_t i = led_min; i < led_max; ++i) {
@@ -79,6 +77,7 @@ void rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     } else {
         rgb_matrix_set_color_all(0,0,0);
     }
+    return true;
 }
 
 void eeconfig_init_kb(void) {

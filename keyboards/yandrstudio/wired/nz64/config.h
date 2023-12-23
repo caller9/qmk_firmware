@@ -15,14 +15,12 @@
  */
 #pragma once
 
-#include "config_common.h"
-
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAAAF
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    Y&R
-#define PRODUCT         nz64
+#define MANUFACTURER    "Y&R"
+#define PRODUCT         "nz64"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -33,7 +31,7 @@
 #define MATRIX_ROW_PINS {  C14, B13, B12, C15, A3 }
 
 /* COL2ROW or ROW2COL */
-#define DIODE_DIRECTION COL2ROW
+#define DIODE_DIRECTION ROW2COL
 
 #define TAP_CODE_DELAY 15
 
@@ -52,7 +50,7 @@
 /* RGN Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
-#    define RGB_DI_PIN A7
+#    define WS2812_DI_PIN A7
 #    define RGBLED_NUM 82
 #    define DRIVER_LED_TOTAL RGBLED_NUM
 
@@ -128,3 +126,8 @@
 #endif
 
 
+#define WS2812_PWM_DRIVER PWMD3  // default: PWMD2
+#define WS2812_PWM_CHANNEL 2  // default: 2
+#define WS2812_PWM_PAL_MODE 2  // Pin "alternate function", see the respective datasheet for the appropriate values for your MCU. default: 2
+#define WS2812_DMA_STREAM STM32_DMA1_STREAM2  // DMA Stream for TIMx_UP, see the respective reference manual for the appropriate values for your MCU.
+#define WS2812_DMA_CHANNEL 5  // DMA Channel for TIMx_UP, see the respective reference manual for the appropriate values for your MCU.

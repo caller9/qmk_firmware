@@ -12,6 +12,6 @@ COMMAND_ENABLE = no         # Commands for debug and configuration
 NKRO_ENABLE = yes           # USB Nkey Rollover
 
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 # RGBLIGHT_ENABLE = yes
 # RGBLIGHT_DRIVER = WS2812
