@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "adam0110.h"
+#include "SEGGER_RTT.h"
 
 bool is_keyboard_left(void) {
 #ifdef I_AM_LEFT
@@ -63,3 +64,37 @@ led_config_t g_led_config = {
 };
 
 #endif
+
+void keyboard_post_init_kb(void) {
+    SEGGER_RTT_Init();
+    SEGGER_RTT_printf(0,"Demo Init!\r\n");
+#ifdef RGB_MATRIX_ENABLE
+    rgb_matrix_reload_from_eeprom();
+#endif
+#ifdef CONSOLE_ENABLE
+    debug_enable=true;
+    // debug_matrix=true;
+    // debug_keyboard=true;
+    // debug_mouse=true;
+#endif
+}
+
+bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_user(keycode, record)) { return false; }
+    if (record->event.pressed) {
+        SEGGER_RTT_printf(0,"Demo Init!\r\n");
+    }
+    return true;
+}
+
+uint32_t tt = 0;
+void housekeeping_task_kb(void) {
+    if (tt == 0) {
+        tt = timer_read32();
+    }
+    uint32_t timer_now = timer_read32();
+    if (TIMER_DIFF_32(timer_now, tt) >= 500) {
+        SEGGER_RTT_printf(0,"Demo Running!\r\n");
+        tt = timer_read32();
+    }
+};
