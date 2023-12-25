@@ -198,7 +198,8 @@ A creative coder.
 | yuan75          | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
 | mxk-t75         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
 | swk60           | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA5D                   |                                  | &quest;           |
+| ivypad          | 0xAA96    | 0xAA5D                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA5E                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
