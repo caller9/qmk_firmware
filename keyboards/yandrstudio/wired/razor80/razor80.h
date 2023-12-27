@@ -44,3 +44,5 @@ enum keyboard_keycodes {
 #define MKC_MACOS TOG_MACOS_KEYMAP
 #define MKC_MCTL  KC_MISSION_CONTROL_MAC
 #define MKC_LPAD  KC_LAUNCHPAD_MAC
+
+extern bool yr_factory_test;
