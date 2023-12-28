@@ -8,7 +8,7 @@
 #define PRODUCT_ID      0xAAF8
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "Y&R"
-#define PRODUCT         "Link65"
+#define PRODUCT         "Linked R3"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -40,3 +40,6 @@
 #define TAP_CODE_DELAY 15
 
 #define TAP_HOLD_CAPS_DELAY 250
+
+#define LED_CAPS_LOCK_PIN B5
+#define LED_PIN_ON_STATE  1
