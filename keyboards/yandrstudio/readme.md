@@ -199,7 +199,8 @@ A creative coder.
 | mxk-t75         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
 | swk60           | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
 | ivypad          | 0xAA96    | 0xAA5D                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA5E                   |                                  | &quest;           |
+| mek70           | 0xAA96    | 0xAA5E                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA5F                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
