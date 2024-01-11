@@ -200,7 +200,9 @@ A creative coder.
 | swk60           | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
 | ivypad          | 0xAA96    | 0xAA5D                   |                                  | &quest;           |
 | mek70           | 0xAA96    | 0xAA5E                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA5F                   |                                  | &quest;           |
+| ckw75_v2        | 0xAA96    | 0xAA5F                   |                                  | &quest;           |
+| 60e             | 0xAA96    | 0xAA40                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA41                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
