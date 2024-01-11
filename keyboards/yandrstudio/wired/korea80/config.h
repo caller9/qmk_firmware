@@ -7,8 +7,8 @@
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAAF1
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    "Y&R"
-#define PRODUCT         "korea80"
+#define MANUFACTURER    "Hyperboring"
+#define PRODUCT         "Hyperboring 80 RGB"
 
 /* key matrix size */
 #define MATRIX_ROWS 6
@@ -31,7 +31,7 @@
 
 #    define WS2812_DI_PIN B3
 
-#define LAYOUT_RGB_88
+#define LAYOUT_RGB_87
 
 #if defined(LAYOUT_RGB_87)
 #    define RGB_MATRIX_LED_COUNT 121
