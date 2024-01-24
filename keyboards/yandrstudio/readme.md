@@ -32,6 +32,7 @@ A creative coder.
 | yr67mag_v1    | 0xAA96    | 0xAA11     | magnetic                              | &check;           |
 | yr80ble       | 0xAA96    | 0xAA12     | BLE 5.0 Dual mode                     | &check;           |
 | F6501         | 0xAA96    | 0xAA13     | BLE 5.0 Dual mode                     | &check;           |
+| R-Star64 HE   | 0xAA96    | 0xAB01     | magnetic                              | &check;           |
 
 
 
@@ -196,13 +197,15 @@ A creative coder.
 | wyse80(ptq)     | 0xAA96    | 0xAA58                   |                                  | &quest;           |
 | soul80          | 0xAA96    | 0xAA59                   |                                  | &quest;           |
 | yuan75          | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
-| mxk-t75         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
+|  yg7501         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
 | swk60           | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
 | ivypad          | 0xAA96    | 0xAA5D                   |                                  | &quest;           |
 | mek70           | 0xAA96    | 0xAA5E                   |                                  | &quest;           |
 | ckw75_v2        | 0xAA96    | 0xAA5F                   |                                  | &quest;           |
 | 60e             | 0xAA96    | 0xAA40                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA41                   |                                  | &quest;           |
+| (yg7502)koi75   | 0xAA96    | 0xAA41                   |                                  | &quest;           |
+| wyse65          | 0xAA96    | 0xAA42                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA43                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
