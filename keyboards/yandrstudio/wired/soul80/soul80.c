@@ -72,3 +72,9 @@ bool via_command_kb(uint8_t *data, uint8_t length) {
     }
     return false;
 }
+
+void keyboard_pre_init_kb(void) {
+    setPinOutput(A8);
+    writePinHigh(A8);
+    keyboard_pre_init_user();
+}
