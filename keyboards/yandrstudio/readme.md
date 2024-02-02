@@ -196,6 +196,7 @@ A creative coder.
 | studiox-c800    | 0xAA96    | 0xAA57                   |                                  | &quest;           |
 | wyse80(ptq)     | 0xAA96    | 0xAA58                   |                                  | &quest;           |
 | soul80          | 0xAA96    | 0xAA59                   |                                  | &quest;           |
+| soul80Pad       | 0xAA96    | 0xAA43                   |                                  | &quest;           |
 | yuan75          | 0xAA96    | 0xAA5A                   |                                  | &quest;           |
 |  yg7501         | 0xAA96    | 0xAA5B                   |                                  | &quest;           |
 | swk60           | 0xAA96    | 0xAA5C                   |                                  | &quest;           |
@@ -205,7 +206,7 @@ A creative coder.
 | 60e             | 0xAA96    | 0xAA40                   |                                  | &quest;           |
 | (yg7502)koi75   | 0xAA96    | 0xAA41                   |                                  | &quest;           |
 | wyse65          | 0xAA96    | 0xAA42                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA43                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA44                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
