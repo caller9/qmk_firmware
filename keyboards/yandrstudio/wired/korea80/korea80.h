@@ -21,4 +21,8 @@
 	{ K500, K501,  K502,  K503,  KC_NO,  KC_NO,  KC_NO,  K507,   KC_NO,  KC_NO,  KC_NO,  K511,  K512,  K513,  K514,  K515,  K516  }  \
 }
 
+typedef struct {
+    uint8_t  underground_rgb_sw : 8;
+} kb_cstm_config_t;
+
 extern bool yr_factory_test;

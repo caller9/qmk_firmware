@@ -121,3 +121,4 @@
 #    define WS2812_DMA_CHANNEL 2
 #endif
 
+#define EECONFIG_KB_DATA_SIZE 1
