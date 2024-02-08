@@ -31,7 +31,7 @@
 
 #    define WS2812_DI_PIN B3
 
-#define LAYOUT_RGB_87
+#define LAYOUT_RGB_88
 
 #if defined(LAYOUT_RGB_87)
 #    define RGB_MATRIX_LED_COUNT 121
