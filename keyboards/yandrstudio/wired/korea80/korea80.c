@@ -206,3 +206,35 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+void bootmagic_lite(void) {
+    // We need multiple scans because debouncing can't be turned off.
+    setPinInputHigh(A15); // col0 pin
+    setPinOutput(B9); // row0 pin
+    writePin(B9, 0);
+    uint16_t toggle_times = 0;
+    bool into_boot = false;
+    while (1) {
+        wait_ms(5);
+        if (readPin(A15) == 0) {
+            toggle_times++;
+        } else {
+            break;
+        }
+        if (toggle_times >= 1000) {
+            into_boot = true;
+            break;
+        }
+    }
+
+    // If the configured key (commonly Esc) is held down on power up,
+    // reset the EEPROM valid state and jump to bootloader.
+    // This isn't very generalized, but we need something that doesn't
+    // rely on user's keymaps in firmware or EEPROM.
+
+    if (into_boot) {
+        eeconfig_disable();
+        // Jump to bootloader.
+        bootloader_jump();
+    }
+}
