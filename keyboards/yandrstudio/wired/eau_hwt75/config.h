@@ -7,8 +7,8 @@
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAA52
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    "Y&R"
-#define PRODUCT         "chaosera_hwt75"
+#define MANUFACTURER    "HAVIT_chaosera_Y&R"
+#define PRODUCT         "Astralforce-1"
 
 /* key matrix size */
 #define MATRIX_ROWS 6

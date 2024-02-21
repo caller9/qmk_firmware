@@ -1,13 +1,13 @@
 {
-    "name": "HWT75",
+    "name": "Astralforce-1",
     "vendorId": "0xAA96",
     "productId": "0xAA52",
     "keycodes": [
         "qmk_lighting"
-      ],
-      "menus": [
+    ],
+    "menus": [
         "qmk_rgb_matrix"
-      ],
+    ],
     "matrix": {
         "rows": 6,
         "cols": 15
