@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "swk80.h"
+#include "process_magic.h"
 
 #include "raw_hid.h"
 bool yr_factory_test = false;
@@ -175,6 +176,11 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
                 kb_cstm_config.underground_rgb_sw += 1;
                 kb_cstm_config.underground_rgb_sw %= 3;
                 eeconfig_update_kb_datablock(&kb_cstm_config);
+            }
+            return false;
+        case KC_F14:
+            if (record->event.pressed) {
+                process_magic(CG_TOGG, record);
             }
             return false;
         default:
