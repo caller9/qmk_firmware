@@ -12,6 +12,9 @@ uint8_t rgb_t_v = 5;
 
 #ifdef RGB_MATRIX_ENABLE
 
+// globol
+kb_cstm_config_t kb_cstm_config;
+
 #include "rgb_matrix_layer.h"
 
 extern rgb_task_states rgb_task_state;
@@ -48,9 +51,9 @@ led_config_t g_led_config = {
       4,4,4,4,4, 4,4,4,4,4, // 7
       4,4,4,4,4, 4,4,4,4,4, // 8
       4,
-      8,8,8,8,8, 8,8,8,8,8,
-      8,8,8,8,8, 8,8,8,8,8,
-      8,8,8,8,8, 8
+      2,2,2,2,2, 2,2,2,2,2,
+      2,2,2,2,2, 2,2,2,2,2,
+      2,2,2,2,2, 2
 
     }
 };
@@ -71,6 +74,24 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     if (!rgb_matrix_indicators_advanced_user(led_min, led_max)) {
         return false;
     }
+
+    if (rgb_matrix_is_enabled()) {
+        if (kb_cstm_config.underground_rgb_sw == 1) {
+            for (uint8_t i = led_min; i < led_max; ++i) {
+                if ((g_led_config.flags[i] == 4)) {
+                    rgb_matrix_set_color(i, 0, 0, 0);
+                }
+            }
+        }
+        if (kb_cstm_config.underground_rgb_sw == 2) {
+            for (uint8_t i = led_min; i < led_max; ++i) {
+                if ((g_led_config.flags[i] == 2)) {
+                    rgb_matrix_set_color(i, 0, 0, 0);
+                }
+            }
+        }
+    }
+
     rgb_matrix_adv_blink_layer_repeat_helper();
     rgb_matrix_adv_set_layer_state(0, host_keyboard_led_state().caps_lock);
 
@@ -116,10 +137,16 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     return true;
 }
 
+void eeconfig_init_kb_datablock(void) {
+    kb_cstm_config.underground_rgb_sw = 0;
+    eeconfig_update_kb_datablock(&kb_cstm_config);
+}
+
 
 void keyboard_post_init_kb(void) {
     rgb_matrix_reload_from_eeprom();
     rgb_matrix_layers = my_rgb_matrix_layers;
+    eeconfig_read_kb_datablock(&kb_cstm_config);
 }
 
 #endif
@@ -138,4 +165,20 @@ bool via_command_kb(uint8_t *data, uint8_t length) {
         return true;
     }
     return false;
+}
+
+bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
+    if (!process_record_user(keycode, record)) { return false; }
+    switch(keycode) {
+        case KC_F13:
+            if (rgb_matrix_config.enable && record->event.pressed) {
+                kb_cstm_config.underground_rgb_sw += 1;
+                kb_cstm_config.underground_rgb_sw %= 3;
+                eeconfig_update_kb_datablock(&kb_cstm_config);
+            }
+            return false;
+        default:
+            break;
+    }
+    return true;
 }
