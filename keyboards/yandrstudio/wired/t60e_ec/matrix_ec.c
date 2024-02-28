@@ -76,14 +76,12 @@ static uint16_t ecsm_readkey_raw(uint8_t row, uint8_t col) {
     uint16_t sw_value = 0;
     discharge_capacitor();
     select_mux(col);
-    wait_us(20);
+    wait_us(10);
 
     clear_all_row_pins();
 
     ATOMIC_BLOCK_FORCEON {
         charge_capacitor(row);
-
-        wait_us(5);
         sw_value = analogReadPin(ADC_READ_PIN);
     }
 
