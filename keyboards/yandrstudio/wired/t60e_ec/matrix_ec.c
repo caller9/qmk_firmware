@@ -35,6 +35,7 @@ static uint16_t      ecsm_sw_value[MATRIX_ROWS][MATRIX_COLS];
 
 static inline void discharge_capacitor(void) {
     setPinOutput(DISCHARGE_PIN);
+    writePinLow(DISCHARGE_PIN);
 }
 static inline void charge_capacitor(uint8_t row) {
     setPinInput(DISCHARGE_PIN); // Z state
@@ -76,12 +77,13 @@ static uint16_t ecsm_readkey_raw(uint8_t row, uint8_t col) {
     uint16_t sw_value = 0;
     discharge_capacitor();
     select_mux(col);
-    wait_us(10);
+    wait_us(20); // 5*1nf*1k = 5us
 
     clear_all_row_pins();
 
     ATOMIC_BLOCK_FORCEON {
-        charge_capacitor(row);
+        charge_capacitor(row); // 5*100K*10pf = 5us
+        wait_us(1);
         sw_value = analogReadPin(ADC_READ_PIN);
     }
 
@@ -115,20 +117,20 @@ bool ecsm_matrix_scan(matrix_row_t current_matrix[]) {
     bool updated = false;
 
     writePinHigh(APLEX_EN_PIN_1);
-    for (int col = 0; col <= 6; col++) {
-        for (int row = 0; row < MATRIX_ROWS; row++) {
-            ecsm_sw_value[row][col] = ecsm_readkey_raw(row, col);
-            updated |= ecsm_update_key(&current_matrix[row], row, col, ecsm_sw_value[row][col]);
-        }
-    }
+    // for (int col = 0; col <= 6; col++) {
+    //     for (int row = 0; row < MATRIX_ROWS; row++) {
+            ecsm_sw_value[0][0] = ecsm_readkey_raw(0, 0);
+            updated |= ecsm_update_key(&current_matrix[0], 0, 0, ecsm_sw_value[0][0]);
+    //     }
+    // }
 
-    writePinHigh(APLEX_EN_PIN_0);
-    for (int col = 7; col < MATRIX_COLS; col++) {
-        for (int row = 0; row < MATRIX_ROWS; row++) {
-            ecsm_sw_value[row][col] = ecsm_readkey_raw(row, col);
-            updated |= ecsm_update_key(&current_matrix[row], row, col, ecsm_sw_value[row][col]);
-        }
-    }
+    // writePinHigh(APLEX_EN_PIN_0);
+    // for (int col = 7; col < MATRIX_COLS; col++) {
+    //     for (int row = 0; row < MATRIX_ROWS; row++) {
+    //         ecsm_sw_value[row][col] = ecsm_readkey_raw(row, col);
+    //         updated |= ecsm_update_key(&current_matrix[row], row, col, ecsm_sw_value[row][col]);
+    //     }
+    // }
     return updated;
 }
 
@@ -174,7 +176,7 @@ uint8_t matrix_scan_custom(matrix_row_t current_matrix[]) {
     // RAW matrix values on console
 #ifdef CONSOLE_ENABLE
     static int cnt = 0;
-    if (cnt++ == 300) {
+    if (cnt++ == 3000) {
         cnt = 0;
         ecsm_print_matrix();
     }

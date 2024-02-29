@@ -12,8 +12,10 @@
 #undef STM32_PLLN_VALUE
 #undef STM32_PLLP_VALUE
 #undef STM32_PLLQ_VALUE
+#undef STM32_ADC_ADCPRE
 
 #define STM32_PLLM_VALUE                    (STM32_HSECLK/1000000)
 #define STM32_PLLN_VALUE                    192
 #define STM32_PLLP_VALUE                    4
 #define STM32_PLLQ_VALUE                    4
+#define STM32_ADC_ADCPRE                    ADC_CCR_ADCPRE_DIV6
