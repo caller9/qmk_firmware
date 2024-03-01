@@ -207,7 +207,8 @@ A creative coder.
 | (yg7502)koi75   | 0xAA96    | 0xAA41                   |                                  | &quest;           |
 | wyse65          | 0xAA96    | 0xAA42                   |                                  | &quest;           |
 | witch75         | 0xAA96    | 0xAA44                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA45                   |                                  | &quest;           |
+| 60e-ec          | 0xAA96    | 0xAA45                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA46                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
