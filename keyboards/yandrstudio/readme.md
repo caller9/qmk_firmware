@@ -33,6 +33,9 @@ A creative coder.
 | yr80ble       | 0xAA96    | 0xAA12     | BLE 5.0 Dual mode                     | &check;           |
 | F6501         | 0xAA96    | 0xAA13     | BLE 5.0 Dual mode                     | &check;           |
 | R-Star64 HE   | 0xAA96    | 0xAB01     | magnetic                              | &check;           |
+| A75           | 0xAA96    | 0xAB02     |                                       | &check;           |
+| L Test-415    | 0xAA96    | 0xBB00     |                                       | &check;           |
+| L Test-405    | 0xAA96    | 0xBB01     |                                       | &check;           |
 
 
 
