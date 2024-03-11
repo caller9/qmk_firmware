@@ -212,7 +212,7 @@ A creative coder.
 | witch75         | 0xAA96    | 0xAA44                   |                                  | &quest;           |
 | 60e-ec          | 0xAA96    | 0xAA45                   |                                  | &quest;           |
 | dpad            | 0xAA96    | 0xAA46                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA47                   |                                  | &quest;           |
+| eau             | 0xAA96    | 0xAA47                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
