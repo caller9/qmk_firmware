@@ -19,3 +19,5 @@
     { K500,  KC_NO, K502,  K503,  K504,  K505,  K506,  K507,  K508,  K509,  K510,  K511,  K512,  K513,  K514 }, \
     { K600,  K601,  K602,  KC_NO, KC_NO, KC_NO, K606,  KC_NO, K608,  K609,  K610,  KC_NO, KC_NO, K613,  K614 }  \
 }
+
+extern bool yr_factory_test;

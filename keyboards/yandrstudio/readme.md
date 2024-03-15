@@ -211,8 +211,10 @@ A creative coder.
 | wyse65          | 0xAA96    | 0xAA42                   |                                  | &quest;           |
 | witch75         | 0xAA96    | 0xAA44                   |                                  | &quest;           |
 | 60e-ec          | 0xAA96    | 0xAA45                   |                                  | &quest;           |
-| dpad            | 0xAA96    | 0xAA46                   |                                  | &quest;           |
+| dpad            | 0xAA96    | 0xAA46(0xAAF6)           |                                  | &quest;           |
 | eau             | 0xAA96    | 0xAA47                   |                                  | &quest;           |
+| star80-rgb      | 0xAA96    | 0xAA48                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA49                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
