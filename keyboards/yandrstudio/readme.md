@@ -214,7 +214,8 @@ A creative coder.
 | dpad            | 0xAA96    | 0xAA46(0xAAF6)           |                                  | &quest;           |
 | eau             | 0xAA96    | 0xAA47                   |                                  | &quest;           |
 | star80-rgb      | 0xAA96    | 0xAA48                   |                                  | &quest;           |
-|                 | 0xAA96    | 0xAA49                   |                                  | &quest;           |
+| nova80ble       | 0xAA96    | 0xAA49                   |                                  | &quest;           |
+|                 | 0xAA96    | 0xAA4A                   |                                  | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
