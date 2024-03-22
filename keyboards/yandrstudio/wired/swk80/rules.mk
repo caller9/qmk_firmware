@@ -4,7 +4,7 @@ MCU = STM32F103
 # Bootloader selection
 # BOOTLOADER = stm32duino
 
-MCU_LDSCRIPT = STM32F103xB_uf2boot
+MCU_LDSCRIPT = STM32F103x8_uf2boot
 BOARD = STM32_F103_STM32DUINO
 BOOTLOADER = uf2boot
 FIRMWARE_FORMAT = uf2
@@ -30,5 +30,7 @@ RGB_MATRIX_DRIVER = ws2812
 WS2812_DRIVER = pwm
 
 QUANTUM_SRC += rgb_matrix_layer.c
+
+DEBOUNCE_TYPE = sym_eager_pk
 
 LTO_ENABLE = yes
