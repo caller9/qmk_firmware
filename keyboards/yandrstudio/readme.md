@@ -192,8 +192,8 @@ A creative coder.
 | (yg)00-1 80%    | 0xAA96    | 0xAAFE(shadow of 0xAA0D) | Hotswap, F103, RGB               | &quest;           |
 | rs40v2          | 0xAA96    | 0xAA50                   | Hotswap, F103, RGB               | &quest;           |
 | xbow-butterfly  | 0xAA96    | 0xAA51                   | Hotswap, BLE, Split              | &quest;           |
-| chaosera-t75    | 0xAA96    | 0xAA52                   |                                  | &quest;           |
-| chaosera-t65    | 0xAA96    | 0xAA53                   |                                  | &quest;           |
+| chaosera-hwt75  | 0xAA96    | 0xAA52                   |                                  | &quest;           |
+| chaosera-hwt65  | 0xAA96    | 0xAA53                   |                                  | &quest;           |
 | chaosera-t80    | 0xAA96    | 0xAA54                   |                                  | &quest;           |
 | mek660          | 0xAA96    | 0xAA56                   |                                  | &quest;           |
 | studiox-c800    | 0xAA96    | 0xAA57                   |                                  | &quest;           |
