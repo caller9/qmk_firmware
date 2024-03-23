@@ -36,6 +36,7 @@ A creative coder.
 | A75           | 0xAA96    | 0xAB02     |                                       | &check;           |
 | L Test-415    | 0xAA96    | 0xBB00     |                                       | &check;           |
 | L Test-405    | 0xAA96    | 0xBB01     |                                       | &check;           |
+| yr6095tm      | 0xAA96    | 0xAA14     |                                       | &check;           |
 
 
 
