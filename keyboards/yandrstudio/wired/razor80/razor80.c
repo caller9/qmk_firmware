@@ -26,7 +26,7 @@ uint8_t rgb_t_v = 10;
 #ifdef RGBLIGHT_ENABLE
 
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}
+    {0, 4, HSV_RED}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
