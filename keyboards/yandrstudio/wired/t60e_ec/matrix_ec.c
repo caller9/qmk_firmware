@@ -32,6 +32,7 @@ const uint8_t  col_channels[] = MATRIX_COL_CHANNELS;
 const uint32_t mux_sel_pins[] = MUX_SEL_PINS;
 
 static uint16_t      ecsm_sw_value[MATRIX_ROWS][MATRIX_COLS];
+static uint16_t      ecsm_sw_top_value[MATRIX_ROWS][MATRIX_COLS];
 
 static inline void discharge_capacitor(void) {
     setPinOutput(DISCHARGE_PIN);
@@ -78,9 +79,10 @@ static uint16_t ecsm_readkey_raw(uint8_t row, uint8_t col) {
     discharge_capacitor();
     select_mux(col);
     clear_all_row_pins();
-    wait_us(10); // 5*1nf*1k = 5us
+    wait_us(20); // 5*1nf*1k = 5us
 
     charge_capacitor(row); // 5*100K*10pf = 5us
+    wait_us(5);
     sw_value = analogReadPin(ADC_READ_PIN);
 
 
@@ -93,14 +95,14 @@ static bool ecsm_update_key(matrix_row_t* current_row, uint8_t row, uint8_t col,
 
     // press to release
     // if (current_state && sw_value < config.low_threshold_matrix[row][col]) {
-    if (current_state && sw_value < 300) {
+    if (current_state && sw_value < ecsm_sw_top_value[row][col]+100) {
         *current_row &= ~(1 << col);
         return true;
     }
 
     // release to press
     // if ((!current_state) && sw_value > config.high_threshold_matrix[row][col]) {
-    if ((!current_state) && sw_value > 650) {
+    if ((!current_state) && sw_value > ecsm_sw_top_value[row][col]+200) {
         *current_row |= (1 << col);
         return true;
     }
@@ -128,6 +130,28 @@ bool ecsm_matrix_scan(matrix_row_t current_matrix[]) {
         }
     }
     return updated;
+}
+
+void set_ec_top_init_val(void) {
+    writePinHigh(APLEX_EN_PIN_1);
+    for (int col = 0; col <= 6; col++) {
+        for (int row = 0; row < MATRIX_ROWS; row++) {
+            ecsm_sw_top_value[row][col] = ecsm_readkey_raw(row, col);
+            if (ecsm_sw_top_value[row][col] <= 0 || ecsm_sw_top_value[row][col] >= 600) {
+                ecsm_sw_top_value[row][col] = 600;
+            }
+        }
+    }
+
+    writePinHigh(APLEX_EN_PIN_0);
+    for (int col = 7; col < MATRIX_COLS; col++) {
+        for (int row = 0; row < MATRIX_ROWS; row++) {
+            ecsm_sw_top_value[row][col] = ecsm_readkey_raw(row, col);
+            if (ecsm_sw_top_value[row][col] <= 0 || ecsm_sw_top_value[row][col] >= 600) {
+                ecsm_sw_top_value[row][col] = 600;
+            }
+        }
+    }
 }
 
 // Debug print key values
@@ -165,7 +189,12 @@ void matrix_init_custom(void) {
     writePinHigh(APLEX_EN_PIN_0);
     setPinOutput(APLEX_EN_PIN_1);
     writePinHigh(APLEX_EN_PIN_1);
-
+    
+    for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
+        for (uint8_t j = 0; j < MATRIX_COLS; j++) {
+            ecsm_sw_top_value[i][j] = 1024;
+        }
+    }
 }
 
 uint8_t matrix_scan_custom(matrix_row_t current_matrix[]) {

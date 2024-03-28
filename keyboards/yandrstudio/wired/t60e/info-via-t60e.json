@@ -1,5 +1,5 @@
 {
-    "name": "60E",
+    "name": "Cloudnine",
     "vendorId": "0xAA96",
     "productId": "0xAA40",
     "matrix": {
@@ -16,10 +16,10 @@
             ]
         },
         "labels": [
-            "Split Backspace (Solder)",
+            "Split Backspace (Solder&EC)",
             "ISO Enter (Solder)",
             "Split Left Shift (Solder)",
-            "HHKB Space (Solder&HotSwap)"
+            "HHKB Space (Solder&HotSwap&EC)"
         ],
         "keymap": [
             [

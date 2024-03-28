@@ -5,7 +5,7 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
-#define PRODUCT_ID      0xAA45
+#define PRODUCT_ID      0xAA40
 #define MANUFACTURER    "MACHINA"
 #define PRODUCT         "Cloudnine EC"
 /* USB Device descriptor parameter */
