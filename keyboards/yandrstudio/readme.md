@@ -217,7 +217,7 @@ A creative coder.
 | star80-rgb      | 0xAA96    | 0xAA48                   |                                  | &quest;           |
 | nova80ble       | 0xAA96    | 0xAA49                   |                                  | &quest;           |
 | hxj65v2         | 0xAA96    | 0xAA4A                   | Hotswap, F103                    | &quest;           |
-|                 | 0xAA96    | 0xAA4B                   | Hotswap, F103                    | &quest;           |
+| rose80          | 0xAA96    | 0xAA4B                   | Hotswap, F103                    | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
