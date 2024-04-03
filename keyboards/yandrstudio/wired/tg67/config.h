@@ -19,8 +19,8 @@
 #define VENDOR_ID       0xAA96
 #define PRODUCT_ID      0xAA8D
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    "TG_Y&R"
-#define PRODUCT         "Enter67"
+#define MANUFACTURER    "PTG_Y&R"
+#define PRODUCT         "PTG65A"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -29,15 +29,17 @@
 #define DIODE_DIRECTION COL2ROW
 
 //                         0    1    2    3    4    5    6    7    8    9    10   11   12   13   14
-#define MATRIX_COL_PINS {  B2,  B10, B11, A8,  A9,  A10, B5,  A15, B3,  A2,  A3,  B4,  A4,  A5,  A6 }
-#define MATRIX_ROW_PINS {  B0,  B6,  B1,  B7,  A1 }
+#define MATRIX_COL_PINS {  B2,  B10, B11, A10, A9,  A8,  A15, B4,  B5,  A2,  A3,  B6,  A4,  A5,  A6 } // ptg
+// #define MATRIX_COL_PINS {  B2,  B10, B11, A8,  A9,  A10, B5,  A15, B3,  A2,  A3,  B4,  A4,  A5,  A6 } // tg
+// #define MATRIX_ROW_PINS {  B0,  B6,  B1,  B7,  A1 } // tg
+#define MATRIX_ROW_PINS {  B0,  B7,  B1,  B3,  A1 } // ptg
 
 #define TAP_HOLD_CAPS_DELAY 250
 
 /* RGB Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
-#    define RGB_DI_PIN A7
+#    define WS2812_DI_PIN A7
 #    define RGB_MATRIX_LED_COUNT 69
 
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 180
@@ -93,5 +95,11 @@
 #   define ENABLE_RGB_MATRIX_MULTISPLASH
 #   define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #   define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
+
+#    define RGB_MATRIX_LAYERS
+#    define RGB_MATRIX_LAYER_BLINK
+#    define RGB_MATRIX_LAYERS_OVERRIDE_RGB_OFF
+#    define RGB_MATRIX_LAYERS_RETAIN_VAL
+#    define RGB_MATRIX_MAX_LAYERS 1
 
 #endif
