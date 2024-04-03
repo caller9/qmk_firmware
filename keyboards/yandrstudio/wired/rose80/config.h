@@ -17,12 +17,12 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xAA96
-// #define PRODUCT_ID      0xAAFE
+// #define PRODUCT_ID      0xAA4B
 // use yr80 pid
-#define PRODUCT_ID      0xAA4B
+#define PRODUCT_ID      0xAA0D
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "Y&R"
-#define PRODUCT         "rose80"
+#define PRODUCT         "ROSE80"
 
 /* key matrix size */
 #define MATRIX_ROWS 6
@@ -64,7 +64,3 @@
 #    define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_RAINBOW_MOOD
 
 #endif
-
-
-#define LED_CAPS_LOCK_PIN A10
-#define LED_PIN_ON_STATE  1

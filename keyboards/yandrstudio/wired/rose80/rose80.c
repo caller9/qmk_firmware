@@ -1,4 +1,4 @@
-/* Copyright 2023 superYoungMonk
+/* Copyright 2024 superYoungMonk
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 #include "process_magic.h"
 
 const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_RED}
+    {8, 1, HSV_RED}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
@@ -38,8 +38,6 @@ void keyboard_post_init_kb(void) {
 }
 
 void keyboard_pre_init_kb(void) {
-    setPinOutput(LED_CAPS_LOCK_PIN);
-    writePinLow(LED_CAPS_LOCK_PIN);
     keyboard_pre_init_user();
 }
 

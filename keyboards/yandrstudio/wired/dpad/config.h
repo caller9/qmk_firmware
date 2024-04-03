@@ -113,4 +113,4 @@
 #endif
 
 // for side rgb
-#define EECONFIG_KB_DATA_SIZE 2
+#define EECONFIG_KB_DATA_SIZE 1
