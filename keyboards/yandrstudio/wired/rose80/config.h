@@ -32,15 +32,15 @@
 #define DIODE_DIRECTION COL2ROW
 
 //                           0     1    2    3    4   5   6   7     8     9    10   11   12  13  14   15  16
-#   define MATRIX_COL_PINS { A15,  B3,  B4,  A3,  A4, A5, A6, B14, B13,  B12,  B11, B10, B2, B1, B15, A8, A9 }
-#   define MATRIX_ROW_PINS { B5,   A0,  A1,  A2,  A7, B6 }
+#   define MATRIX_COL_PINS { A0,   A1,  A2,  A3,  A4, A5, A6, B14, B13,  B12,  B11, B10, B2, B1, B15, A8, A9 }
+#   define MATRIX_ROW_PINS { B3,   B4,  B5,  B6,  A7, B7 }
 
 #define TAP_CODE_DELAY 15
 
 #ifdef RGBLIGHT_ENABLE
 
 #    define WS2812_DI_PIN A10
-#    define RGBLED_NUM 8
+#    define RGBLED_NUM 9
 #    define DRIVER_LED_TOTAL RGBLED_NUM
 #    define RGBLIGHT_SLEEP
 #    define RGBLIGHT_VAL_STEP 5
