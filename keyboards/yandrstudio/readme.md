@@ -183,16 +183,16 @@ A creative coder.
 | tn80v2          | 0xAA96    | 0xAAF7                   | Hotswap, F103                    | &check;           |
 | link65_alt      | 0xAA96    | 0xAAF8                   | Hotswap, F103                    | &check;           |
 | ns75            | 0xAA96    | 0xAAF9                   | Hotswap, BLE                     | &quest;           |
-| v75_mag         | 0xAA96    | 0xAAFA                   | MAG                              | &quest;           |
+| v75_mag         | 0xAA96    | 0xAAFA                   | MAG                              | &check;           |
 | bs_star80       | 0xAA96    | 0xAAFB                   | Hotswap, RGB                     | &quest;           |
 | d40             | 0xAA96    | 0xAAFC                   | Hotswap, RGB                     | &quest;           |
 | nico80          | 0xAA96    | 0xAAEE                   | Hotswap, BLE                     | &quest;           |
 | yg75            | 0xAA96    | 0xAA81                   | Hotswap, BLE                     | &quest;           |
 | swk60           | 0xAA96    | 0xAACC                   | Hotswap, 60+pad                  | &quest;           |
-| hxj65           | 0xAA96    | 0xAAFD                   | Hotswap, F103                    | &quest;           |
-| (yg)00-1 80%    | 0xAA96    | 0xAAFE(shadow of 0xAA0D) | Hotswap, F103, RGB               | &quest;           |
+| hxj65           | 0xAA96    | 0xAAFD                   | Hotswap, F103                    | &check;           |
+| (yg)00-1 80%    | 0xAA96    | 0xAAFE(shadow of 0xAA0D) | Hotswap, F103, RGB               | &check;           |
 | rs40v2          | 0xAA96    | 0xAA50                   | Hotswap, F103, RGB               | &quest;           |
-| xbow-butterfly  | 0xAA96    | 0xAA51                   | Hotswap, BLE, Split              | &quest;           |
+| xbow-butterfly  | 0xAA96    | 0xAA51                   | Hotswap, BLE, Split              | &cross;           |
 | chaosera-hwt75  | 0xAA96    | 0xAA52                   |                                  | &quest;           |
 | chaosera-hwt65  | 0xAA96    | 0xAA53                   |                                  | &quest;           |
 | chaosera-t80    | 0xAA96    | 0xAA54                   |                                  | &quest;           |
@@ -212,13 +212,14 @@ A creative coder.
 | wyse65          | 0xAA96    | 0xAA42                   |                                  | &quest;           |
 | witch75         | 0xAA96    | 0xAA44                   |                                  | &quest;           |
 | 60e-ec          | 0xAA96    | 0xAA45                   |                                  | &quest;           |
-| dpad            | 0xAA96    | 0xAA46(0xAAF6)           |                                  | &quest;           |
+| dpad            | 0xAA96    | 0xAA46(0xAAF6)           |                                  | &check;           |
 | eau             | 0xAA96    | 0xAA47                   |                                  | &quest;           |
-| star80-rgb      | 0xAA96    | 0xAA48                   |                                  | &quest;           |
+| star80-rgb      | 0xAA96    | 0xAA48                   |                                  | &check;           |
 | nova80ble       | 0xAA96    | 0xAA49                   |                                  | &quest;           |
-| hxj65v2         | 0xAA96    | 0xAA4A                   | Hotswap, F103                    | &quest;           |
+| hxj65v2         | 0xAA96    | 0xAA4A                   | Hotswap, F103                    | &check;           |
 | rose80          | 0xAA96    | 0xAA4B(shadow of 0xAA0D) | Hotswap, F103                    | &quest;           |
-|                 | 0xAA96    |                          | Hotswap, F103                    | &quest;           |
+| FK2             | 0xAA96    | 0xAA4C                   | Hotswap, F103                    | &quest;           |
+|                 |           |                          |                                  |                   |
 
 
 ### Obsolete or Test keyboard for reference design only
