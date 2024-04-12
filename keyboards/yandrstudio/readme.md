@@ -219,6 +219,7 @@ A creative coder.
 | hxj65v2         | 0xAA96    | 0xAA4A                   | Hotswap, F103                    | &check;           |
 | rose80          | 0xAA96    | 0xAA4B(shadow of 0xAA0D) | Hotswap, F103                    | &quest;           |
 | FK2             | 0xAA96    | 0xAA4C                   | Hotswap, F103                    | &quest;           |
+| NULL75          | 0xAA96    | 0xAA4D                   | Hotswap, BLE                     | &quest;           |
 |                 |           |                          |                                  |                   |
 
 
