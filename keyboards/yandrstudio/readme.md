@@ -220,7 +220,10 @@ A creative coder.
 | rose80          | 0xAA96    | 0xAA4B(shadow of 0xAA0D) | Hotswap, F103                    | &quest;           |
 | FK2             | 0xAA96    | 0xAA4C                   | Hotswap, F103                    | &quest;           |
 | NULL75          | 0xAA96    | 0xAA4D                   | Hotswap, BLE                     | &quest;           |
-|                 |           |                          |                                  |                   |
+| KBD-17Pad(64)   | 0xAA96    | 0xAA4E                   |                                  |                   |
+| KBD-17Pad(64)   | 0xAA96    | 0xAA4F                   |                                  |                   |
+| KBD-17Pad(64)   | 0xAA96    | 0xAA50                   |                                  |                   |
+|                 | 0xAA96    | 0xAA51                   |                                  |                   |
 
 
 ### Obsolete or Test keyboard for reference design only
