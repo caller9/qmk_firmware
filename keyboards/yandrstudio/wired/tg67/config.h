@@ -20,7 +20,9 @@
 #define PRODUCT_ID      0xAA8D
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "PTG_Y&R"
-#define PRODUCT         "PTG65A"
+// #define PRODUCT         "Enter65"
+// #define PRODUCT         "PTG65A"
+#define PRODUCT         "KEEBOX65"
 
 /* key matrix size */
 #define MATRIX_ROWS 5
