@@ -15,6 +15,7 @@
  */
 
 #include QMK_KEYBOARD_H
+#include "process_magic.h"
 
 enum keyboard_keycodes {
     LOCK_GUI = QK_KB,
