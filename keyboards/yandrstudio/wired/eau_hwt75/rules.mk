@@ -12,3 +12,5 @@ NKRO_ENABLE = yes           # USB Nkey Rollover
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = ws2812
 WS2812_DRIVER = pwm
+
+LTO_ENABLE = yes
