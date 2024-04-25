@@ -180,7 +180,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             return false;
         case KC_F14:
             if (record->event.pressed) {
-                process_magic(CG_TOGG, record);
+                process_magic(GUI_TOG, record);
             }
             return false;
         default:
