@@ -1,79 +1,134 @@
-// Copyright 2023 Y&R-Biu (@jiaxin96)
+// Copyright 2022 Y&R-Biu (@jiaxin96)
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "dk8710.h"
 
-#include "raw_hid.h"
-bool yr_factory_test = false;
-uint32_t rgb_t_itv = 1000;
-uint32_t rgb_t_timer = 0;
-uint8_t rgb_t_pos = 0;
-uint8_t rgb_t_v = 10;
 
-#ifdef RGBLIGHT_ENABLE
+const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {
+/* Each AW20216 channel is controlled by a register at some offset between 0x00
+ * and 0xD7 inclusive.
+ * See drivers/awinic/aw20216.h for the mapping between register offsets and
+ * driver pin locations.
+ *    driver
+ *    |  R location
+ *    |  |        G location
+ *    |  |        |        B location
+ *    |  |        |        | */
+    /* Line 1*/
+    { 0,  CS1_SW1,    CS2_SW1,    CS3_SW1  },
+    { 0,  CS7_SW1,    CS8_SW1,    CS9_SW1  },
+    { 0, CS13_SW1,   CS14_SW1,   CS15_SW1  },
+    { 0, CS19_SW1,   CS20_SW1,   CS21_SW1  },
+    { 0, CS25_SW1,   CS26_SW1,   CS27_SW1  },
+    { 0, CS28_SW1,   CS29_SW1,   CS30_SW1  },
+    { 0,  CS1_SW2,    CS2_SW2,    CS3_SW2  },
+    { 0,  CS7_SW2,    CS8_SW2,    CS9_SW2  },
+    { 0, CS13_SW2,   CS14_SW2,   CS15_SW2  },
+    { 0, CS19_SW2,   CS20_SW2,   CS21_SW2  },
+    { 0, CS28_SW2,   CS29_SW2,   CS30_SW2  },
+    { 0,  CS1_SW3,    CS2_SW3,    CS3_SW3  },
+    { 0,  CS7_SW3,    CS8_SW3,    CS9_SW3  },
+    { 0, CS13_SW3,   CS14_SW3,   CS15_SW3  },
+    { 0, CS19_SW3,   CS20_SW3,   CS21_SW3  },
+    { 0, CS25_SW3,   CS26_SW3,   CS27_SW3  },
+    { 0, CS28_SW3,   CS29_SW3,   CS30_SW3  },
+    { 0,  CS1_SW4,    CS2_SW4,    CS3_SW4  },
+    { 0,  CS7_SW4,    CS8_SW4,    CS9_SW4  },
+    { 0, CS13_SW4,   CS14_SW4,   CS15_SW4  },
+    { 0, CS19_SW4,   CS20_SW4,   CS21_SW4  },
+    { 0, CS25_SW4,   CS26_SW4,   CS27_SW4  },
+    { 0, CS28_SW4,   CS29_SW4,   CS30_SW4  },
+    { 0,  CS1_SW5,    CS2_SW5,    CS3_SW5  },
+    { 0,  CS7_SW5,    CS8_SW5,    CS9_SW5  },
+    { 0, CS13_SW5,   CS14_SW5,   CS15_SW5  },
+    { 0, CS19_SW5,   CS20_SW5,   CS21_SW5  },
+    { 0, CS25_SW5,   CS26_SW5,   CS27_SW5  },
+    { 0, CS28_SW5,   CS29_SW5,   CS30_SW5  },
+    { 0,  CS1_SW6,    CS2_SW6,    CS3_SW6  },
+    { 0,  CS7_SW6,    CS8_SW6,    CS9_SW6  },
+    { 0, CS13_SW6,   CS14_SW6,   CS15_SW6  },
+    { 0, CS19_SW6,   CS20_SW6,   CS21_SW6  },
+    { 0, CS25_SW6,   CS26_SW6,   CS27_SW6  },
+    { 0, CS28_SW6,   CS29_SW6,   CS30_SW6  },
+    { 0,  CS1_SW7,    CS2_SW7,    CS3_SW7  },
+    { 0,  CS7_SW7,    CS8_SW7,    CS9_SW7  },
+    { 0, CS13_SW7,   CS14_SW7,   CS15_SW7  },
+    { 0, CS19_SW7,   CS20_SW7,   CS21_SW7  },
+    { 0, CS25_SW7,   CS26_SW7,   CS27_SW7  },
+    { 0, CS28_SW7,   CS29_SW7,   CS30_SW7  },
+    { 0,  CS1_SW8,    CS2_SW8,    CS3_SW8  },
+    { 0,  CS7_SW8,    CS8_SW8,    CS9_SW8  },
+    { 0, CS13_SW8,   CS14_SW8,   CS15_SW8  },
+    { 0, CS19_SW8,   CS20_SW8,   CS21_SW8  },
+    { 0, CS25_SW8,   CS26_SW8,   CS27_SW8  },
+    { 0, CS28_SW8,   CS29_SW8,   CS30_SW8  },
+    { 0,  CS1_SW9,    CS2_SW9,    CS3_SW9  },
+    { 0,  CS7_SW9,    CS8_SW9,    CS9_SW9  },
+    { 0, CS13_SW9,   CS14_SW9,   CS15_SW9  },
+    { 0, CS19_SW9,   CS20_SW9,   CS21_SW9  },
+    { 0, CS25_SW9,   CS26_SW9,   CS27_SW9  },
+    { 0, CS28_SW9,   CS29_SW9,   CS30_SW9  },
+    { 0, CS4_SW1,   CS5_SW1,   CS6_SW1  },
+    { 0, CS4_SW2,   CS5_SW2,   CS6_SW2  },
+    { 0, CS4_SW3,   CS5_SW3,   CS6_SW3  },
+    { 0, CS4_SW4,   CS5_SW4,   CS6_SW4  },
+    { 0, CS10_SW1,   CS11_SW1,   CS12_SW1  },
+    { 0, CS10_SW2,   CS11_SW2,   CS12_SW2  },
+    { 0, CS10_SW3,   CS11_SW3,   CS12_SW3  },
+    { 0, CS10_SW4,   CS11_SW4,   CS12_SW4  },
+    { 0, CS10_SW5,   CS11_SW5,   CS12_SW5  },
+    { 0, CS10_SW6,   CS11_SW6,   CS12_SW6  },
+    { 0, CS10_SW7,   CS11_SW7,   CS12_SW7  },
+    { 0, CS10_SW8,   CS11_SW8,   CS12_SW8  },
+    { 0, CS10_SW9,   CS11_SW9,   CS12_SW9  },
+    { 0, CS10_SW1,   CS11_SW1,   CS12_SW1  },
+    { 0, CS10_SW2,   CS11_SW2,   CS12_SW2  },
+    { 0, CS10_SW3,   CS11_SW3,   CS12_SW3  },
+    { 0, CS10_SW4,   CS11_SW4,   CS12_SW4  },
+    { 0, CS10_SW5,   CS11_SW5,   CS12_SW5  },
+    { 0, CS10_SW6,   CS11_SW6,   CS12_SW6  },
+    { 0, CS10_SW7,   CS11_SW7,   CS12_SW7  },
+    { 0, CS22_SW1,   CS23_SW1,   CS24_SW1  },
+    { 0, CS22_SW2,   CS23_SW2,   CS24_SW2  },
+    { 0, CS22_SW3,   CS23_SW3,   CS24_SW3  },
+    { 0, CS22_SW5,   CS23_SW5,   CS24_SW5  },
+    { 0, CS22_SW6,   CS23_SW6,   CS24_SW6  },
+    { 0, CS22_SW7,   CS23_SW7,   CS24_SW7  },
+    { 0, CS22_SW8,   CS23_SW8,   CS24_SW8  },
+    { 0, CS22_SW9,   CS23_SW9,   CS24_SW9  }
+};
 
-const rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 12, HSV_RED}
-);
 
-const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_capslock_layer
-);
+led_config_t g_led_config = {
+    {
+{12,  11,  10,  9,  8,  7,  6,  5,  4,  3,  2,  1,  0,   NO_LED}, 
+{13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,   NO_LED}, 
+{39,  38,  37,  36,  35,  34,  33,  32,  31,  30,  29,  28,  27,  26}, 
+{40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51,   NO_LED,  52}, 
+{64,   NO_LED,  63,  62,  61,  60,  59,  58,  57,  56,  55,  54,   NO_LED,  53}, 
+{65,  66,  67,   NO_LED,   NO_LED,  68,   NO_LED,   NO_LED,   NO_LED,  69,  70,   NO_LED,  71,  72}, 
+{80,  79,   NO_LED,  78,  77,   NO_LED,   NO_LED,   NO_LED,   NO_LED,   NO_LED,  76,  75,  74,  73}
+    },
+    {
+     {207,0},{190,0},{172,0},{155,0},{138,0},{121,0},{103,0},{86,0},{69,0},{52,0},{34,0},{17,0},{0,0},
+{0,11},{17,11},{34,11},{52,11},{69,11},{86,11},{103,11},{121,11},{138,11},{155,11},{172,11},{190,11},{207,11},       
+{224,21},{207,21},{190,21},{172,21},{155,21},{138,21},{121,21},{103,21},{86,21},{69,21},{52,21},{34,21},{17,21},{0,21},
+{0,32},{17,32},{34,32},{52,32},{69,32},{86,32},{103,32},{121,32},{138,32},{155,32},{172,32},{190,32},       {224,32},
+{224,43},       {190,43},{172,43},{155,43},{138,43},{121,43},{103,43},{86,43},{69,43},{52,43},{34,43},       {0,43},
+{0,53},{17,53},{34,53},              {86,53},                     {155,53},{172,53},       {207,53},{224,53},
+{224,64},{207,64},{190,64},{172,64},                                   {69,64},{52,64},       {17,64},{0,64}
+    },
+    {
+      // LED Index to Flag
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4,4,4,4,4, 4,4,4,4,4,
+      4
 
-bool led_update_kb(led_t led_state) {
-    if (led_update_user(led_state)) {
-        rgblight_set_layer_state(0, led_state.caps_lock);
     }
-    return true;
-}
-
-void keyboard_post_init_kb(void) {
-    rgblight_layers = my_rgb_layers;
-    rgblight_reload_from_eeprom();
-}
-
-#endif
-
-
-void housekeeping_task_kb(void) {
-    if (yr_factory_test) {
-        if (rgblight_get_mode() != RGBLIGHT_MODE_STATIC_LIGHT) {
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
-        } else {
-            if (rgb_t_timer == 0) rgb_t_timer = timer_read32();
-            if (timer_elapsed32(rgb_t_timer) > rgb_t_itv) {
-                rgb_t_timer = timer_read32();
-                rgb_t_pos = (rgb_t_pos + 1) % 3;
-            }
-            switch (rgb_t_pos) {
-                case 0:
-                    rgblight_setrgb(rgb_t_v, 0, 0);
-                    break;
-                case 1:
-                    rgblight_setrgb(0, rgb_t_v, 0);
-                    break;
-                case 2:
-                    rgblight_setrgb(0, 0, rgb_t_v);
-                default:
-                    break;
-
-            }
-        }
-    }
-}
-
-bool via_command_kb(uint8_t *data, uint8_t length) {
-    uint8_t *command_id = &(data[0]);
-    uint8_t *command_data = &(data[1]);
-    if (*command_id == 0x03 && command_data[0] == 0x96) {
-        dprintf(">>Recv a pkg with cmd_data1: [%d]!!\n", command_data[1]);
-        if (command_data[1] == 0x96) { // Factory test
-            if (!yr_factory_test) {
-                yr_factory_test = true;
-            }
-            raw_hid_send(data, length);
-        }
-        return true;
-    }
-    return false;
-}
+};
