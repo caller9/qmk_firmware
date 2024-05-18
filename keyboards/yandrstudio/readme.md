@@ -224,8 +224,9 @@ A creative coder.
 | KBD-17Pad(64)   | 0xAA96    | 0xAA4F                   |                                  |                   |
 | KBD-17Pad(64)   | 0xAA96    | 0xAA30                   |                                  |                   |
 | wyse65          | 0xAA96    | 0xAA31                   | Hotswap, Encoder                 |                   |
-| ZSP_CFG         | 0xAA96    | 0xAA32                   | CH552 CONFIG                     |                   |
-| ZSP_Recv        | 0xAA96    | 0xAA33                   | Recv                             |                   |
+| ZSP_CFG_L       | 0xAA96    | 0xAA32                   | CH552 CONFIG                     |                   |
+| ZSP_CFG_R       | 0xAA96    | 0xAA33                   | CH552 CONFIG                     |                   |
+| ZSP_Recv        | 0xAA96    | 0xAA34                   | Recv                             |                   |
 
 
 ### Obsolete or Test keyboard for reference design only
