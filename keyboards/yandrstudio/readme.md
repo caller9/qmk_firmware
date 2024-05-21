@@ -224,16 +224,11 @@ A creative coder.
 | KBD-17Pad(64)   | 0xAA96    | 0xAA4F                   |                                  |                   |
 | KBD-17Pad(64)   | 0xAA96    | 0xAA30                   |                                  |                   |
 | wyse65          | 0xAA96    | 0xAA31                   | Hotswap, Encoder                 |                   |
-<<<<<<< HEAD
 | ZSP_CFG_L       | 0xAA96    | 0xAA32                   | CH552 CONFIG                     | &check;           |
 | ZSP_CFG_R       | 0xAA96    | 0xAA33                   | CH552 CONFIG                     | &check;           |
 | ZSP_Recv        | 0xAA96    | 0xAA34                   | Recv                             | &check;           |
 | syrin tkl       | 0xAA96    | 0xAA35                   | Hotswap, F103                    | &quest;           |
-=======
-| ZSP_CFG_L       | 0xAA96    | 0xAA32                   | CH552 CONFIG                     |                   |
-| ZSP_CFG_R       | 0xAA96    | 0xAA33                   | CH552 CONFIG                     |                   |
-| ZSP_Recv        | 0xAA96    | 0xAA34                   | Recv                             |                   |
->>>>>>> aa8700532c467ef71f491c9581346a24901cbd30
+| popo75          | 0xAA96    | 0xAA36                   | Hotswap, F103                    | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
