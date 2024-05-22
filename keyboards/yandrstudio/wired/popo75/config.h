@@ -17,10 +17,10 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID 0xAA96
-#define PRODUCT_ID 0xAA61
+#define PRODUCT_ID 0xAA36
 #define DEVICE_VER 0x0001
-#define MANUFACTURER "BL_Y&R"
-#define PRODUCT "bl75"
+#define MANUFACTURER "NAN"
+#define PRODUCT "B75"
 
 /* key matrix size */
 #define MATRIX_ROWS 6
@@ -35,18 +35,13 @@
 
 #define TAP_CODE_DELAY 15
 
-#ifdef ENCODER_ENABLE
-#    define ENCODERS_PAD_A { B1 }
-#    define ENCODERS_PAD_B { B0 }
-#    define ENCODER_DEFAULT_POS 0x3
-#endif
 
 
 /* RGB Matrix */
 #ifdef RGB_MATRIX_ENABLE
 
 #    define WS2812_DI_PIN A7
-#    define RGBLED_NUM 116
+#    define RGBLED_NUM 81
 #    define RGB_MATRIX_LED_COUNT RGBLED_NUM
 
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200
@@ -102,38 +97,5 @@
 #   define ENABLE_RGB_MATRIX_MULTISPLASH
 #   define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #   define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
-
-#endif
-
-#define FACTORY_TEST
-
-#ifdef RGBLIGHT_ENABLE
-#    define RGB_DI_PIN A7
-#    define RGBLED_NUM 116
-#    define RGBLIGHT_SLEEP
-#    define RGBLIGHT_VAL_STEP 10
-
-#    ifdef FACTORY_TEST
-
-#    define RGBLIGHT_LIMIT_VAL 80
-#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RGB_TEST)
-#    define RGBLIGHT_EFFECT_RGB_TEST
-
-#    else
-
-#    define RGBLIGHT_LIMIT_VAL 200
-#    define RGBLIGHT_DEFAULT_MODE (RGBLIGHT_MODE_RAINBOW_SWIRL+5)
-#    define RGBLIGHT_EFFECT_BREATHING
-#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#    define RGBLIGHT_EFFECT_SNAKE
-#    define RGBLIGHT_EFFECT_KNIGHT
-#    define RGBLIGHT_EFFECT_CHRISTMAS
-#    define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#    define RGBLIGHT_EFFECT_RGB_TEST
-#    define RGBLIGHT_EFFECT_ALTERNATING
-#    define RGBLIGHT_EFFECT_TWINKLE
-
-#    endif
 
 #endif
