@@ -41,7 +41,7 @@
 #ifdef RGB_MATRIX_ENABLE
 
 #    define WS2812_DI_PIN A7
-#    define RGBLED_NUM 81
+#    define RGBLED_NUM 83
 #    define RGB_MATRIX_LED_COUNT RGBLED_NUM
 
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 200
