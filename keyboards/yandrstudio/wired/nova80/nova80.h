@@ -1,4 +1,4 @@
-/* Copyright 2023 superYoungMonk
+/* Copyright 2024 superYoungMonk
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,3 +44,5 @@ enum keyboard_keycodes {
 #define MKC_MACOS TOG_MACOS_KEYMAP
 #define MKC_MCTL  KC_MISSION_CONTROL_MAC
 #define MKC_LPAD  KC_LAUNCHPAD_MAC
+
+extern bool yr_factory_test;

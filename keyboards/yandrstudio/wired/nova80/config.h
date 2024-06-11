@@ -19,8 +19,9 @@
 #define VENDOR_ID       0xAA96
 // use yr80 pid
 #define PRODUCT_ID      0xAA0D
+// #define PRODUCT_ID      0xAA37
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    "Y&R"
+#define MANUFACTURER    "NOVA_Y&R"
 #define PRODUCT         "NOVA80"
 
 

@@ -229,6 +229,7 @@ A creative coder.
 | ZSP_Recv        | 0xAA96    | 0xAA34                   | Recv                             | &check;           |
 | syrin tkl       | 0xAA96    | 0xAA35                   | Hotswap, F103                    | &quest;           |
 | popo75          | 0xAA96    | 0xAA36                   | Hotswap, F103                    | &quest;           |
+| nova80          | 0xAA96    | 0xAA37(shadow of 0xAA0D) | Hotswap, F103                    | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
