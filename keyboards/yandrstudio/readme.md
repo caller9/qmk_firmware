@@ -231,6 +231,7 @@ A creative coder.
 | popo75          | 0xAA96    | 0xAA36                   | Hotswap, F103                    | &quest;           |
 | nova80          | 0xAA96    | 0xAA37(shadow of 0xAA0D) | Hotswap, F103                    | &quest;           |
 | waves60         | 0xAA96    | 0xAA38                   | Hotswap, F103, HHKB              | &quest;           |
+| rose80          | 0xAA96    | 0xAA39                   | Hotswap, F103, TFT               | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
