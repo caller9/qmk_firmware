@@ -40,3 +40,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS)
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!yr_factory_test) return true;
+    switch(keycode) {
+        case LT(1, KC_SPC):
+        case MO(1):
+            if (record->event.pressed) {
+                register_code(KC_APP);
+            } else {
+                unregister_code(KC_APP);
+            }
+            return false;
+        default:
+            break;
+    }
+    return true;
+}

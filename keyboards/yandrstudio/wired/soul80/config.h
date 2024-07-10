@@ -8,7 +8,7 @@
 #define PRODUCT_ID      0xAA59
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "Y&R"
-#define PRODUCT         "Soul80"
+#define PRODUCT         "Glory80"
 
 /* key matrix size */
 #define MATRIX_ROWS 6
