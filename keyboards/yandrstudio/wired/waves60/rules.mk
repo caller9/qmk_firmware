@@ -15,6 +15,8 @@ NKRO_ENABLE = yes           # USB Nkey Rollover
 RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = ws2812
 
+TRI_LAYER_ENABLE = yes
+
 # CUSTOM_MATRIX = lite    # for using the A9 pin as matrix io
 # QUANTUM_SRC += matrix.c
 
