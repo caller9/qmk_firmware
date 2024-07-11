@@ -17,6 +17,8 @@ RGB_MATRIX_DRIVER = ws2812
 
 TRI_LAYER_ENABLE = yes
 
+LTO_ENABLE = yes
+
 # CUSTOM_MATRIX = lite    # for using the A9 pin as matrix io
 # QUANTUM_SRC += matrix.c
 

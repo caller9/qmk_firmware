@@ -1,7 +1,7 @@
 {
     "name": "ZER STUDIO WAVES 60",
     "vendorId": "0xAA96",
-    "productId": "0xAA37",
+    "productId": "0xAA38",
     "keycodes": ["qmk_lighting"],
     "menus": ["qmk_rgb_matrix"],
     "customKeycodes": [
