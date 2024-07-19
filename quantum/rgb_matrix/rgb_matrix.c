@@ -75,15 +75,10 @@ static bool            suspend_state     = false;
 static uint8_t         rgb_last_enable   = UINT8_MAX;
 static uint8_t         rgb_last_effect   = UINT8_MAX;
 static effect_params_t rgb_effect_params = {0, LED_FLAG_ALL, false};
-<<<<<<< HEAD
 rgb_task_states rgb_task_state    = SYNCING;
 #if RGB_MATRIX_TIMEOUT > 0
 static uint32_t rgb_anykey_timer;
 #endif // RGB_MATRIX_TIMEOUT > 0
-=======
-static rgb_task_states rgb_task_state    = SYNCING;
->>>>>>> a6857872f2955c82810b37ca02e6a91788744b2b
-
 // double buffers
 static uint32_t rgb_timer_buffer;
 #ifdef RGB_MATRIX_KEYREACTIVE_ENABLED
@@ -377,14 +372,10 @@ void rgb_matrix_task(void) {
         case RENDERING:
             rgb_task_render(effect);
 #if !defined(RGB_MATRIX_LAYERS_OVERRIDE_RGB_OFF)
-            if (effect) {
-<<<<<<< HEAD
+            if (effect)
 #endif
-                // Only run the basic indicators in the last render iteration (default there are 5 iterations)
-                if (rgb_effect_params.iter == RGB_MATRIX_LED_PROCESS_MAX_ITERATIONS) {
-=======
+            {
                 if (rgb_task_state == FLUSHING) { // ensure we only draw basic indicators once rendering is finished
->>>>>>> a6857872f2955c82810b37ca02e6a91788744b2b
                     rgb_matrix_indicators();
                 }
                 rgb_matrix_indicators_advanced(&rgb_effect_params);
