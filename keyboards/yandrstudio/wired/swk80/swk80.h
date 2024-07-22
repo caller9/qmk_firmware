@@ -25,4 +25,8 @@ typedef struct {
     uint8_t  underground_rgb_sw : 8;
 } kb_cstm_config_t;
 
+typedef struct {
+    uint8_t  debounce : 8;
+} km_cstm_config_t;
+
 extern bool yr_factory_test;

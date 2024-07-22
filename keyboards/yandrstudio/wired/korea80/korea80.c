@@ -80,7 +80,7 @@ const rgb_matrix_adv_layer_segment_t* const PROGMEM my_rgb_matrix_layers[] = RGB
     my_capslock_layer
 );
 
-extern LED_TYPE rgb_matrix_ws2812_array[RGB_MATRIX_LED_COUNT];
+extern rgb_led_t rgb_matrix_ws2812_array[RGB_MATRIX_LED_COUNT];
 
 bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     if (!rgb_matrix_indicators_advanced_user(led_min, led_max)) {

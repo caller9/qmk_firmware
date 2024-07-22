@@ -19,7 +19,18 @@
 #include <hal.h>
 #include "chibios_config.h"
 
+#if 0
 /* chThdSleepX of zero maps to infinite - so we map to a tiny delay to still yield */
+#define wait_ms(ms)                     \
+    do {                                \
+        if (ms != 0) {                  \
+            for (uint16_t ms_tt = 0; ms_tt<1000; ms_tt++) { wait_us(ms); } \
+        } else {                        \
+            wait_us(1);                 \
+        }                               \
+    } while (0)
+#endif
+
 #define wait_ms(ms)                     \
     do {                                \
         if (ms != 0) {                  \

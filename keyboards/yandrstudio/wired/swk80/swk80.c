@@ -69,7 +69,7 @@ const rgb_matrix_adv_layer_segment_t* const PROGMEM my_rgb_matrix_layers[] = RGB
     my_capslock_layer
 );
 
-extern LED_TYPE rgb_matrix_ws2812_array[RGB_MATRIX_LED_COUNT];
+extern rgb_led_t rgb_matrix_ws2812_array[RGB_MATRIX_LED_COUNT];
 
 bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     if (!rgb_matrix_indicators_advanced_user(led_min, led_max)) {
@@ -148,6 +148,7 @@ void keyboard_post_init_kb(void) {
     rgb_matrix_reload_from_eeprom();
     rgb_matrix_layers = my_rgb_matrix_layers;
     eeconfig_read_kb_datablock(&kb_cstm_config);
+    keyboard_post_init_user();
 }
 
 #endif
@@ -180,7 +181,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
             return false;
         case KC_F14:
             if (record->event.pressed) {
-                process_magic(GUI_TOG, record);
+                process_magic(GU_TOGG, record);
             }
             return false;
         default:

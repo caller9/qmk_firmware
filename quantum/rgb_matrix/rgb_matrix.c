@@ -372,9 +372,8 @@ void rgb_matrix_task(void) {
         case RENDERING:
             rgb_task_render(effect);
 #if !defined(RGB_MATRIX_LAYERS_OVERRIDE_RGB_OFF)
-            if (effect)
+            if (effect) {
 #endif
-            {
                 if (rgb_task_state == FLUSHING) { // ensure we only draw basic indicators once rendering is finished
                     rgb_matrix_indicators();
                 }

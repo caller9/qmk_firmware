@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include "via.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYOUT(
@@ -16,8 +17,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_F13,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS,  KC_TRNS, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS,
-        KC_TRNS,           RGB_TOG, RGB_MOD, RGB_RMOD,RGB_VAI, RGB_VAD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS,
-        KC_TRNS,  KC_F14, KC_TRNS,                                     KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+        KC_TRNS,           RGB_TOG, RGB_MOD, RGB_RMOD,RGB_VAI, RGB_VAD, NK_TOGG, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS,
+        KC_TRNS,  KC_F14, KC_TRNS,                                      KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
     LAYOUT(
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -49,4 +50,87 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             return true;
     }
     return true;
+}
+
+// custom ID codes
+enum via_indicator_value {
+    id_debounce_ms = 1
+};
+
+km_cstm_config_t km_cstm_config;
+
+void eeconfig_init_user_datablock(void) {
+    km_cstm_config.debounce = DEBOUNCE;
+    eeconfig_update_user_datablock(&km_cstm_config);
+}
+
+//On Keyboard startup
+void keyboard_post_init_user(void) {
+    //Read our custom menu variables from memory
+    eeconfig_read_user_datablock(&km_cstm_config);
+}
+
+void km_config_set_value(uint8_t *data) {
+    uint8_t *value_id   = &(data[0]);
+    uint8_t *value_data = &(data[1]);
+    switch ( *value_id )
+    {
+        case id_debounce_ms:
+            km_cstm_config.debounce = *value_data;
+            break;
+    }
+}
+
+void km_config_get_value(uint8_t *data) {
+    uint8_t *value_id   = &(data[0]);
+    uint8_t *value_data = &(data[1]);
+    switch ( *value_id )
+    {
+        case id_debounce_ms:
+            *value_data = km_cstm_config.debounce;
+            break;
+    }
+}
+void km_config_save(void) {
+    eeconfig_update_user_datablock(&km_cstm_config);
+}
+
+void via_custom_value_command_kb(uint8_t *data, uint8_t length) {
+    // data = [ command_id, channel_id, value_id, value_data ]
+    uint8_t *command_id        = &(data[0]);
+    uint8_t *channel_id        = &(data[1]);
+    uint8_t *value_id_and_data = &(data[2]);
+
+    if ( *channel_id == id_custom_channel ) {
+        switch ( *command_id )
+        {
+            case id_custom_set_value:
+            {
+                km_config_set_value(value_id_and_data);
+                break;
+            }
+            case id_custom_get_value:
+            {
+                km_config_get_value(value_id_and_data);
+                break;
+            }
+            case id_custom_save:
+            {
+                km_config_save();
+                break;
+            }
+            default:
+            {
+                // Unhandled message.
+                *command_id = id_unhandled;
+                break;
+            }
+        }
+        return;
+    }
+
+    // Return the unhandled state
+    *command_id = id_unhandled;
+
+    // DO NOT call raw_hid_send(data,length) here, let caller do this
 }
