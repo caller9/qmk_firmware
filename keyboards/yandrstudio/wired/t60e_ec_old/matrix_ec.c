@@ -84,6 +84,8 @@ static uint16_t ecsm_readkey_raw(uint8_t row, uint8_t col) {
     charge_capacitor(row); // 5*100K*10pf = 5us
     wait_us(5);
     sw_value = analogReadPin(ADC_READ_PIN);
+
+
     return sw_value;
 }
 
@@ -187,7 +189,7 @@ void matrix_init_custom(void) {
     writePinHigh(APLEX_EN_PIN_0);
     setPinOutput(APLEX_EN_PIN_1);
     writePinHigh(APLEX_EN_PIN_1);
-
+    
     for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
         for (uint8_t j = 0; j < MATRIX_COLS; j++) {
             ecsm_sw_top_value[i][j] = 1024;

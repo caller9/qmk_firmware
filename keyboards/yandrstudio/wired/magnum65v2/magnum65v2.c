@@ -24,17 +24,15 @@ uint8_t rgb_t_v = 10;
 
 #if defined(RGBLIGHT_ENABLE)
 
+// globol
+kb_cstm_config_t kb_cstm_config;
 
-const rgblight_segment_t PROGMEM my_capslock_on_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+rgblight_segment_t PROGMEM my_capslock_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 1, HSV_RED}
-);
-const rgblight_segment_t PROGMEM my_capslock_off_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, HSV_BLACK}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
-    my_capslock_on_layer,
-    my_capslock_off_layer
+    my_capslock_layer
 );
 
 bool led_update_kb(led_t led_state) {
@@ -60,8 +58,16 @@ const rgblight_driver_t rgblight_driver = {
     .setleds = setleds_custom,
 };
 
+void eeconfig_init_kb_datablock(void) {
+    kb_cstm_config.caps_brightness = RGBLIGHT_LIMIT_VAL;
+    kb_cstm_config.caps_color_h = 0;
+    kb_cstm_config.caps_color_s = 255;
+    eeconfig_update_kb_datablock(&kb_cstm_config);
+}
+
 void keyboard_post_init_kb(void) {
     rgblight_reload_from_eeprom();
+    eeconfig_read_kb_datablock(&kb_cstm_config);
     rgblight_layers = my_rgb_layers;
     keyboard_post_init_user();
 }
@@ -124,3 +130,80 @@ void housekeeping_task_kb(void) {
 }
 
 #endif
+
+
+
+void caps_config_set_value(uint8_t *data) {
+    uint8_t *value_id   = &(data[0]);
+    uint8_t *value_data = &(data[1]);
+    switch ( *value_id )
+    {
+        case via_caps_brightness:
+            kb_cstm_config.caps_brightness = *value_data;
+            break;
+        case via_caps_color:
+            kb_cstm_config.caps_color_h = value_data[0];
+            kb_cstm_config.caps_color_s = value_data[1];
+            break;
+    }
+    rgblight_segment_t temp_stt = {0, 1, kb_cstm_config.caps_color_h, kb_cstm_config.caps_color_s, kb_cstm_config.caps_brightness};
+    my_capslock_layer[0] = temp_stt;
+}
+
+void caps_config_get_value(uint8_t *data) {
+    uint8_t *value_id   = &(data[0]);
+    uint8_t *value_data = &(data[1]);
+    switch ( *value_id )
+    {
+        case via_caps_brightness:
+            *value_data = kb_cstm_config.caps_brightness;
+            break;
+        case via_caps_color:
+            value_data[0] = kb_cstm_config.caps_color_h;
+            value_data[1] = kb_cstm_config.caps_color_s;
+            break;
+    }
+}
+void caps_config_save(void) {
+    eeconfig_update_kb_datablock(&kb_cstm_config);
+}
+
+void via_custom_value_command_kb(uint8_t *data, uint8_t length) {
+    // data = [ command_id, channel_id, value_id, value_data ]
+    uint8_t *command_id        = &(data[0]);
+    uint8_t *channel_id        = &(data[1]);
+    uint8_t *value_id_and_data = &(data[2]);
+
+    if ( *channel_id == id_custom_channel ) {
+        switch ( *command_id )
+        {
+            case id_custom_set_value:
+            {
+                caps_config_set_value(value_id_and_data);
+                break;
+            }
+            case id_custom_get_value:
+            {
+                caps_config_get_value(value_id_and_data);
+                break;
+            }
+            case id_custom_save:
+            {
+                caps_config_save();
+                break;
+            }
+            default:
+            {
+                // Unhandled message.
+                *command_id = id_unhandled;
+                break;
+            }
+        }
+        return;
+    }
+
+    // Return the unhandled state
+    *command_id = id_unhandled;
+
+    // DO NOT call raw_hid_send(data,length) here, let caller do this
+}

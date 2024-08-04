@@ -17,7 +17,7 @@
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID 0xAA96
-#define PRODUCT_ID 0xAA3A
+#define PRODUCT_ID 0xAABC
 #define DEVICE_VER 0x0001
 #define MANUFACTURER "NAN"
 #define PRODUCT "MAGNUM"
@@ -65,3 +65,5 @@
 
 #endif
 
+// for side rgb
+#define EECONFIG_KB_DATA_SIZE 3

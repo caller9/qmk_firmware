@@ -15,4 +15,22 @@
     { K400,  K401,  K402,  KC_NO, KC_NO, KC_NO, KC_NO, K407,  K408,  K409,  KC_NO, KC_NO, K412,  K413,  KC_NO, K415 }  \
 }
 
+
+
+typedef struct {
+    uint8_t  caps_brightness: 8;
+    uint8_t  caps_color_h: 8;
+    uint8_t  caps_color_s: 8;
+
+} kb_cstm_config_t;
+
+enum via_caps_value {
+    via_caps_brightness = 1,
+    via_caps_color = 2
+};
+
+void caps_config_set_value(uint8_t *data);
+void caps_config_get_value(uint8_t *data);
+void caps_config_save (void);
+
 extern bool yr_factory_test;

@@ -1,13 +1,9 @@
 # MCU name
-MCU = STM32F103
+MCU = STM32F401
 
 # Bootloader selection
-# BOOTLOADER = stm32duino
-
-MCU_LDSCRIPT = STM32F103xB_uf2boot
-BOARD = STM32_F103_STM32DUINO
-BOOTLOADER = uf2boot
-FIRMWARE_FORMAT = uf2
+# BOOTLOADER = stm32-dfu
+BOOTLOADER = tinyuf2
 
 # Build Options
 #   change yes to no to disable
