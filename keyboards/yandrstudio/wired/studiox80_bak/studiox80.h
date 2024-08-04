@@ -20,5 +20,3 @@
     { K400,  K401,  K402,  K403,  K404,  K405,  K406,  K407,  K408,  K409,  K410,  K411,  KC_NO, KC_NO, KC_NO, K415,  KC_NO }, \
     { K500,  K501,  K502,  K503,  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, K511,  K512,  K513,  K514,  K515,  K516 }  \
 }
-
-extern bool yr_factory_test;
