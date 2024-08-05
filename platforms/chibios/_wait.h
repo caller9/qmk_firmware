@@ -31,6 +31,7 @@
     } while (0)
 #endif
 
+#if 1
 #define wait_ms(ms)                     \
     do {                                \
         if (ms != 0) {                  \
@@ -39,6 +40,7 @@
             chThdSleepMicroseconds(1);  \
         }                               \
     } while (0)
+#endif
 
 #ifdef WAIT_US_TIMER
 void wait_us(uint16_t duration);

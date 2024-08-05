@@ -7,6 +7,4 @@ void keyboard_post_init_kb(void) {
 #ifdef CONSOLE_ENABLE
     debug_enable = true;
 #endif
-    // chThdCreateStatic(TxThread1, sizeof(TxThread1), NORMALPRIO+1, Thread2, NULL);
-    // chThdCreateStatic(RxThread1, sizeof(RxThread1), NORMALPRIO+1, Thread1, NULL);
 }

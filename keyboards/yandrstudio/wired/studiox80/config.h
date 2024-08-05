@@ -8,7 +8,7 @@
 #define PRODUCT_ID      0xAA57
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    "StudioX_Y&R"
-#define PRODUCT         "C800"
+#define PRODUCT         "countach800"
 
 /* key matrix size */
 #define MATRIX_ROWS 6
