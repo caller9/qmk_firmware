@@ -7,7 +7,6 @@
 
 
 #define USB_DRIVER USBD2
-#define USB_SUSPEND_WAKEUP_DELAY 200
 
 // #define WAIT_FOR_USB
 

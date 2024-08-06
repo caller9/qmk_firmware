@@ -11,7 +11,6 @@ uint32_t rgb_t_timer = 0;
 uint8_t rgb_t_pos = 0;
 uint8_t rgb_t_v = 5;
 
-#ifdef RGB_MATRIX_ENABLE
 
 // globol
 kb_cstm_config_t kb_cstm_config;
@@ -151,7 +150,6 @@ void keyboard_post_init_kb(void) {
     keyboard_post_init_user();
 }
 
-#endif
 
 bool via_command_kb(uint8_t *data, uint8_t length) {
     uint8_t *command_id = &(data[0]);

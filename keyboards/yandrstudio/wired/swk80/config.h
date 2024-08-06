@@ -4,7 +4,6 @@
 #pragma once
 
 /* RGN Matrix */
-#ifdef RGB_MATRIX_ENABLE
 
 #    define RGB_MATRIX_LED_COUNT 117
 #    define RGB_MATRIX_LAYERS
@@ -13,14 +12,11 @@
 #    define RGB_MATRIX_LAYERS_RETAIN_VAL
 #    define RGB_MATRIX_MAX_LAYERS 1
 
-#endif
 
 
-#ifdef WS2812_DRIVER_PWM
 #    define WS2812_PWM_DRIVER PWMD2  // default: PWMD2
 #    define WS2812_PWM_CHANNEL 4  // default: 2
 #    define WS2812_DMA_STREAM STM32_DMA1_STREAM2
 #    define WS2812_DMA_CHANNEL 2
-#endif
 
 #define EECONFIG_KB_DATA_SIZE 1
