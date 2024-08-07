@@ -72,7 +72,7 @@ static bool read_matrix(matrix_row_t current_matrix[], uint8_t current_row, uint
 
     // 多次采样取平均值
     mag_keys[current_row][current_col].last_adc = get_curr_adc_val(current_mux, current_addr);
-
+    // wait_ms(1);
     debug_for_adc();
     return matrix_changed;
 }
@@ -102,6 +102,13 @@ void matrix_init_custom(void) {
 
     analogReadPin(B0);
     analogReadPin(B1);
+
+    gpio_set_pin_output(MUX_ADD_PIN0);
+    gpio_set_pin_output(MUX_ADD_PIN1);
+    gpio_set_pin_output(MUX_ADD_PIN2);
+    writePin(MUX_ADD_PIN0, 1);
+    writePin(MUX_ADD_PIN1, 1);
+    writePin(MUX_ADD_PIN2, 0);
 }
 
 
@@ -116,6 +123,9 @@ uint8_t matrix_scan_custom(matrix_row_t current_matrix[]) {
     // Set addr, scan key
     uint8_t current_col = 0;
     uint8_t current_row = 0;
+    adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0));
+    adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0));
+    adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0));
     for (uint8_t current_addr = 0; current_addr < 8; ++current_addr) {
         set_mux_addr(current_addr);
         for (uint8_t current_mux = 0; current_mux < NUM_OF_MUX; ++current_mux) {

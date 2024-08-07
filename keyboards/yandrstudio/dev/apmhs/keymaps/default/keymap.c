@@ -3,6 +3,7 @@
 #include QMK_KEYBOARD_H
 #include "debug.h"
 #include "analog.h"
+#include "apmhs.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYOUT(
@@ -15,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 void keyboard_post_init_user(void) {
-    
+
 }
 // static void dummy_vt_callback(virtual_timer_t *vtp, void *p) {}
 
@@ -24,7 +25,7 @@ static uint32_t adc_debug_timer = 0;
 void housekeeping_task_user(void) {
     uint32_t timer_now = timer_read32();
     if (TIMER_DIFF_32(timer_now, adc_debug_timer) >= 1000) {
-        dprintf("==========MATRIX ADC VAL, VUSB:%d, VHC:%d=============\n", analogReadPin(B1), analogReadPin(B0));
+        dprintf("==========MATRIX ADC VAL, VUSB:%d, VHC:%d, VREF:%d, %d=============\n", analogReadPin(B1), analogReadPin(B0), adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0)), kb_cstm_config.raw[1]);
         dprintf("     ");
         for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
             dprintf("C%2d  ", current_col+1);
@@ -46,3 +47,7 @@ void housekeeping_task_user(void) {
     // chVTSetContinuous(&vt, TIME_MS2I(10), dummy_vt_callback, NULL);
 }
 
+void dummy_cb(USBDriver *usbp) {
+    (void)usbp;
+    rgblight_setrgb_at(0,0,100,0);
+}

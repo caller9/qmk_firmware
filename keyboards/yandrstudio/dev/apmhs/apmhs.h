@@ -18,3 +18,13 @@
     { K300,  KC_NO, K302,  K303,  K304,  K305,  K306,  K307,  K308,  K309,  K310,  K311,  K312,  K313,  KC_NO}, \
     { K400,  K401,  K402,  KC_NO, KC_NO, KC_NO, K406,  KC_NO, KC_NO, K409,  K410,  K411,  K412,  K413,  K414 }  \
 }
+
+
+typedef union {
+    uint8_t raw[EECONFIG_YR_DATA_SIZE];
+    struct {
+        uint8_t t2[EECONFIG_YR_DATA_SIZE];
+    };
+} __attribute__((packed)) kb_cstm_config_t;
+
+extern kb_cstm_config_t kb_cstm_config;

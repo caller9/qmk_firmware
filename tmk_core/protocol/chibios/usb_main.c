@@ -330,9 +330,15 @@ static bool usb_requests_hook_cb(USBDriver *usbp) {
     return false;
 }
 
-static __attribute__((unused)) void dummy_cb(USBDriver *usbp) {
+// static __attribute__((unused)) void dummy_cb(USBDriver *usbp) {
+//     (void)usbp;
+//     rgblight_setrgb_at(0,0,100,0);
+// }
+__attribute__((weak)) void dummy_cb(USBDriver *usbp) {
     (void)usbp;
 }
+
+
 
 static const USBConfig usbcfg = {
     usb_event_cb,          /* USB events callback */

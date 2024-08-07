@@ -1,1 +1,1 @@
-make yandrstudio/dev/apmhs/rev1/stm32:default
+make yandrstudio/dev/apmhs/f4xx:default

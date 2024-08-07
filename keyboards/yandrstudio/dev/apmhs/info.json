@@ -7,6 +7,7 @@
     "mousekey": true,
     "extrakey": true
   },
+  "keyboard_name": "ATEST",
   "rgblight": {
     "led_count": 69,
     "animations": {
@@ -27,7 +28,8 @@
         "driver": "pwm"
     },
   "usb": {
-    "vid": "0x1209",
-    "pid": "0x4920"
+    "vid": "0xAA96",
+    "pid": "0xFF00",
+    "device_version": "1.0.0"
   }
 }

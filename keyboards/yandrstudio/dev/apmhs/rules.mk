@@ -6,3 +6,5 @@ SRC += analog.c
 
 CUSTOM_MATRIX = lite    # for using the A9 pin as matrix io
 QUANTUM_SRC += matrix.c
+
+KEYBOARD_SHARED_EP = yes   # Free up some extra endpoints - needed if console+mouse+extra
