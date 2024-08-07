@@ -87,11 +87,25 @@ void keyboard_post_init_kb(void) {
     rgb_matrix_reload_from_eeprom();
     rgb_matrix_layers = my_rgb_matrix_layers;
     keyboard_post_init_user();
+#ifdef CONSOLE_ENABLE
+    debug_enable = true;
+#endif
 }
 
 bool via_command_kb(uint8_t *data, uint8_t length) {
     uint8_t *command_id = &(data[0]);
     uint8_t *command_data = &(data[1]);
+    if (*command_id == 0x96 && command_data[0] == 0x96) {
+        if (command_data[1] == 0x96) {
+            eeconfig_disable();
+        }
+        if (command_data[2] == 0x96) {
+            bootloader_jump();
+        } else if (command_data[2] == 0x97) {
+            NVIC_SystemReset();
+        }
+        return true;
+    }
     if (*command_id == 0x03 && command_data[0] == 0x96) {
         dprintf(">>Recv a pkg with cmd_data1: [%d]!!\n", command_data[1]);
         if (command_data[1] == 0x96) { // Factory test
