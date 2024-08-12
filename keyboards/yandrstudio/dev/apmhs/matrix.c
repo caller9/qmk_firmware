@@ -73,7 +73,21 @@ static bool read_matrix(matrix_row_t current_matrix[], uint8_t current_row, uint
     // 多次采样取平均值
     mag_keys[current_row][current_col].last_adc = get_curr_adc_val(current_mux, current_addr);
     // wait_ms(1);
-    debug_for_adc();
+    // debug_for_adc();
+    matrix_row_t last_row_value = current_matrix[current_row];
+
+    matrix_row_t current_row_value = last_row_value;
+    if (mag_keys[current_row][current_col].last_adc <= 2000) {
+        current_row_value |= (MATRIX_ROW_SHIFTER << current_col);
+    } else {
+        current_row_value &= ~(MATRIX_ROW_SHIFTER << current_col);
+    }
+    // 防止按键调试乱触发
+    // Determine if the matrix changed state
+    if ((last_row_value != current_row_value)) {
+        matrix_changed |= true;
+        current_matrix[current_row] = current_row_value;
+    }
     return matrix_changed;
 }
 

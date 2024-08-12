@@ -23,7 +23,7 @@ MEMORY
     flash0 (rx) : org = 0x08000000, len = 32k      /* Sector 0,1  - BOOTLOADER */
     flash1 (rx) : org = 0x08000000+32k, len = 16k  /* Sector 2    - Emulated eeprom */
     flash2 (rx) : org = 0x08000000+48k, len = 16k  /* Sector 3    - USER DATA */
-    flash3 (rx) : org = 0x00000000+64k, len = 512k - 64k  /* Sector 4..6 - Rest of firmware */
+    flash3 (rx) : org = 0x08000000+64k, len = 512k - 64k  /* Sector 4..6 - Rest of firmware */
     flash4 (rx) : org = 0x00000000, len = 0
     flash5 (rx) : org = 0x00000000, len = 0
     flash6 (rx) : org = 0x00000000, len = 0
