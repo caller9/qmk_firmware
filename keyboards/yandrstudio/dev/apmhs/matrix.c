@@ -40,25 +40,25 @@ uint16_t get_adc_my(uint8_t r, uint8_t c) {
     return mag_keys[r][c].last_adc;
 }
 
-// static uint32_t adc_debug_timer = 0;
+static uint32_t adc_debug_timer = 0;
 void debug_for_adc(void) {
-    // uint32_t timer_now = timer_read32();
-    // if (TIMER_DIFF_32(timer_now, adc_debug_timer) >= 1000) {
-    //     dprintf("==========MATRIX ADC VAL, GM:=============\n");
-    //     dprintf("     ");
-    //     for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
-    //         dprintf("C%2d  ", current_col+1);
-    //     }
-    //     dprintf("\n");
-    //     for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
-    //         dprintf("R%d: ", current_row+1);
-    //         for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
-    //             dprintf("%4d ", mag_keys[current_row][current_col].last_adc);
-    //         }
-    //         dprintf("\n");
-    //     }
-    //     adc_debug_timer = timer_now;
-    // }
+    uint32_t timer_now = timer_read32();
+    if (TIMER_DIFF_32(timer_now, adc_debug_timer) >= 1000) {
+        dprintf("==========RFV12:%d=============\n", adc_read(TO_MUX(17,1)));
+        dprintf("     ");
+        for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
+            dprintf("C%2d  ", current_col+1);
+        }
+        dprintf("\n");
+        for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
+            dprintf("R%d: ", current_row+1);
+            for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
+                dprintf("%4d ", mag_keys[current_row][current_col].last_adc);
+            }
+            dprintf("\n");
+        }
+        adc_debug_timer = timer_now;
+    }
 }
 
 inline void update_key_state(uint8_t current_row, uint8_t current_col, uint16_t adc_val) {
@@ -71,7 +71,7 @@ static bool read_matrix(matrix_row_t current_matrix[], uint8_t current_row, uint
     bool matrix_changed = false;
 
     // 多次采样取平均值
-    mag_keys[current_row][current_col].last_adc = get_curr_adc_val(current_mux, current_addr);
+    // mag_keys[current_row][current_col].last_adc = get_curr_adc_val(current_mux, current_addr);
     // wait_ms(1);
     // debug_for_adc();
     matrix_row_t last_row_value = current_matrix[current_row];
@@ -84,10 +84,10 @@ static bool read_matrix(matrix_row_t current_matrix[], uint8_t current_row, uint
     }
     // 防止按键调试乱触发
     // Determine if the matrix changed state
-    if ((last_row_value != current_row_value)) {
-        matrix_changed |= true;
-        current_matrix[current_row] = current_row_value;
-    }
+    // if ((last_row_value != current_row_value)) {
+    //     matrix_changed |= true;
+    //     current_matrix[current_row] = current_row_value;
+    // }
     return matrix_changed;
 }
 

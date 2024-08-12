@@ -1,7 +1,7 @@
 // Copyright 2018-2022 Nick Brassel (@tzarc)
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include "quantum.h"
-
+#include "SEGGER_RTT.h"
 #include "apmhs.h"
 
 // globol
@@ -12,6 +12,8 @@ void eeconfig_init_kb(void) {
 }
 
 void keyboard_post_init_kb(void) {
+    SEGGER_RTT_Init();
+    adcSTM32EnableTSVREFE();
     keyboard_post_init_user();
 #ifdef CONSOLE_ENABLE
     debug_enable = true;

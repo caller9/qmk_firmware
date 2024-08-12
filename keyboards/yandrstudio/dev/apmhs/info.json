@@ -3,9 +3,10 @@
   "maintainer": "NAN",
   "features": {
     "bootmagic": true,
-    "console": true,
+    "console": false,
     "mousekey": true,
-    "extrakey": true
+    "extrakey": true,
+    "nkro": true
   },
   "keyboard_name": "ATEST",
   "rgblight": {

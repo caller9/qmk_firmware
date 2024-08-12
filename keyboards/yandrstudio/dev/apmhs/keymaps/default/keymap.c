@@ -4,6 +4,8 @@
 #include "debug.h"
 #include "analog.h"
 #include "apmhs.h"
+#include "SEGGER_RTT.h"
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYOUT(
@@ -25,19 +27,21 @@ static uint32_t adc_debug_timer = 0;
 void housekeeping_task_user(void) {
     uint32_t timer_now = timer_read32();
     if (TIMER_DIFF_32(timer_now, adc_debug_timer) >= 1000) {
-        dprintf("==========MATRIX ADC VAL, VUSB:%d, VHC:%d, VREF:%d, %d=============\n", analogReadPin(B1), analogReadPin(B0), adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0)), kb_cstm_config.raw[1]);
-        dprintf("     ");
-        for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
-            dprintf("C%2d  ", current_col+1);
-        }
-        dprintf("\n");
-        for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
-            dprintf("R%d: ", current_row+1);
-            for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
-                dprintf("%4d ", get_adc_my(current_row,current_col));
-            }
-            dprintf("\n");
-        }
+        SEGGER_RTT_printf(0,"Demo Init!, V12:%d \r\n", adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0)));
+        // 1487
+        SEGGER_RTT_printf(0, "==========MATRIX ADC VAL, VHC:%d, VREF:%d, %d=============\n", analogReadPin(B0), adc_read(TO_MUX(ADC_CHANNEL_VREFINT, 0)), kb_cstm_config.raw[1]);
+        // dprintf("     ");
+        // for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
+        //     dprintf("C%2d  ", current_col+1);
+        // }
+        // dprintf("\n");
+        // for (uint8_t current_row = 0; current_row < MATRIX_ROWS; current_row++) {
+        //     dprintf("R%d: ", current_row+1);
+        //     for (uint8_t current_col = 0; current_col < MATRIX_COLS; current_col++) {
+        //         dprintf("%4d ", get_adc_my(current_row,current_col));
+        //     }
+        //     dprintf("\n");
+        // }
         adc_debug_timer = timer_now;
     }
 
