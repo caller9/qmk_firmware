@@ -3,7 +3,7 @@
   "maintainer": "NAN",
   "features": {
     "bootmagic": true,
-    "console": false,
+    "console": true,
     "mousekey": true,
     "extrakey": true,
     "nkro": true
