@@ -232,6 +232,7 @@ A creative coder.
 | nova80          | 0xAA96    | 0xAA37(shadow of 0xAA0D) | Hotswap, F103                    | &quest;           |
 | waves60         | 0xAA96    | 0xAA38                   | Hotswap, F103, HHKB              | &quest;           |
 | rose80          | 0xAA96    | 0xAA39                   | Hotswap, F103, TFT               | &quest;           |
+| h70             | 0xAA96    | 0xAA3A                   | Hotswap, RP2040, TFT             | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
