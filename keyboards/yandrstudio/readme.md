@@ -233,7 +233,9 @@ A creative coder.
 | waves60         | 0xAA96    | 0xAA38                   | Hotswap, F103, HHKB              | &quest;           |
 | rose80          | 0xAA96    | 0xAA39                   | Hotswap, F103, TFT               | &quest;           |
 | h70             | 0xAA96    | 0xAA3A                   | Hotswap, RP2040, TFT             | &quest;           |
-| sades60         | 0xAA96    | 0xAA3B                   | WB-3M                            | &quest;           |
+| sades60         | 0xAA96    | 0xAA3B                   | WB-3M,60%                        | &quest;           |
+| MK806           | 0xAA96    | 0xAA3C                   | WB-3M,98%                        | &quest;           |
+| PTG6095         | 0xAA96    | 0xAA3D(shadow of 0xAA0C) | WB-3M,60%                        | &quest;           |
 
 
 ### Obsolete or Test keyboard for reference design only
