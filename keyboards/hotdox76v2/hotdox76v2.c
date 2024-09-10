@@ -131,13 +131,13 @@ void render_layer(uint8_t layer) {
     render_layer_helper_fun(0, PSTR("LAYER:"), 12, 6);
     switch (layer) {
         case 0:
-            render_layer_helper_fun(1, PSTR("1:HOME"), 12, 6);
+            render_layer_helper_fun(1, PSTR("1:LINUX"), 10, 7);
             break;
         case 1:
-            render_layer_helper_fun(1, PSTR("2:CODE"), 12, 6);
+            render_layer_helper_fun(1, PSTR("2:MACOS"), 10, 7);
             break;
         case 2:
-            render_layer_helper_fun(1, PSTR("3:OFFICE"), 0, 8);
+            render_layer_helper_fun(1, PSTR("3:EXTRA"), 10, 7);
             break;
         case 3:
         default:
@@ -180,7 +180,7 @@ bool oled_task_kb(void) {
     }
     render_logo();
     if (is_keyboard_left()) {
-        render_layer(biton32(layer_state));
+        render_layer(get_highest_layer(layer_state));
     } else {
         render_cur_input();
     }
