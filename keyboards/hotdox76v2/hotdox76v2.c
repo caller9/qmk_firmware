@@ -73,6 +73,8 @@ typedef struct _slave_to_master_t {
 } slave_to_master_t;
 slave_to_master_t s2m;
 
+bool enable_input_echo = false;
+
 oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
     strcpy((char *)(m2s.current_alp), "[    ]");
     m2s.current_alp[1] = UNC;
@@ -182,7 +184,9 @@ bool oled_task_kb(void) {
     if (is_keyboard_left()) {
         render_layer(get_highest_layer(layer_state));
     } else {
-        render_cur_input();
+        if (enable_input_echo) {
+            render_cur_input();
+        }
     }
     return false;
 }
@@ -235,11 +239,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case TOG_OLED:
             if (record->event.pressed) {
-                if (is_oled_on()) {
-                    oled_off();
-                } else {
-                    oled_on();
-                }
+                enable_input_echo = !enable_input_echo;
             }
             return false;
         default:
