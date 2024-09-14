@@ -64,17 +64,24 @@ led_config_t g_led_config = {
 typedef struct _master_to_slave_t {
     int  cur_alp_index;
     char current_alp[7];
+    uint8_t cpm_key_count;
+    uint8_t cpm_column;
 } master_to_slave_t;
 master_to_slave_t m2s;
 
 typedef struct _slave_to_master_t {
     int  cur_alp_index;
     char current_alp[7];
+    uint8_t cpm_key_count;
+    uint8_t cpm_column;
 } slave_to_master_t;
 slave_to_master_t s2m;
 
-bool enable_input_echo = false;
-
+#define CPM_MAX_PIXELS 32 // Display is 32 pixels tall
+#define CPM_TIME_PER_PIXEL_MS 4000 // 32 keys (pixels) per 4 seconds is 480 CPM or 96 WPM
+#define CPM_MAX_COLUMNS 96 // 96 pixels wide
+#define CPM_TOTAL_TIME_WINDOW_MS 384000 // 96 pixels wide * CPM_TIME_PER_PIXEL_MS
+    
 oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
     strcpy((char *)(m2s.current_alp), "[    ]");
     m2s.current_alp[1] = UNC;
@@ -148,32 +155,45 @@ void render_layer(uint8_t layer) {
     }
 }
 
-void render_cur_input_helper_fun(uint8_t start_line, const char *data, uint8_t gap_w, uint8_t l) {
-    uint8_t j = 0, k = 0;
-    for (j = 0; j < l; ++j) {      // font index
-        for (k = 0; k < 12; ++k) { // font byte index
-            //                                        base + logo_w(0) + gap_w(12) +l*font_w(12)+current_byte_index
-            oled_write_raw_byte(pgm_read_byte(&ext_big_font[data[j] - 0x21][k]), start_line * 2 * 128 + gap_w + j * 12 + k);
-            oled_write_raw_byte(pgm_read_byte(&ext_big_font[data[j] - 0x21][12 + k]), start_line * 2 * 128 + 128 + gap_w + j * 12 + k);
-        }
-    }
-    for (j = 0; j < gap_w; ++j) {
-        oled_write_raw_byte(pgm_read_byte(&blank_block), start_line * 2 * 128 + j);
-        oled_write_raw_byte(pgm_read_byte(&blank_block), start_line * 2 * 128 + gap_w + l * 12 + j);
+unsigned char reverse(unsigned char b) {
+   b = (b & 0xF0) >> 4 | (b & 0x0F) << 4;
+   b = (b & 0xCC) >> 2 | (b & 0x33) << 2;
+   b = (b & 0xAA) >> 1 | (b & 0x55) << 1;
+   return b;
+}
 
-        oled_write_raw_byte(pgm_read_byte(&blank_block), start_line * 2 * 128 + 128 + j);
-        oled_write_raw_byte(pgm_read_byte(&blank_block), start_line * 2 * 128 + 128 + gap_w + l * 12 + j);
+void render_cpm_graph_helper(uint8_t cpm_column, uint8_t cpm_key_count) {
+    uint8_t count = cpm_key_count < CPM_MAX_PIXELS ? cpm_key_count : CPM_MAX_PIXELS;
+    uint8_t i = 0;
+    for (i = 0; i < 4; i++) {
+        int8_t difference = count - ((3-i) * 8);
+        if (difference < 0) difference = 0;
+        count = count - difference;
+        unsigned char bar_segment = reverse(((1 << difference) - 1)); //MSB is on the bottom, so flip.
+        oled_write_raw_byte(bar_segment, i * 128 + cpm_column);
+        // Blank the next two columns
+        oled_write_raw_byte(0, i * 128 + (cpm_column + 1) % CPM_MAX_COLUMNS);
+        oled_write_raw_byte(0, i * 128 + (cpm_column + 2) % CPM_MAX_COLUMNS);
     }
 }
 
-void render_cur_input(void) {
-    render_cur_input_helper_fun(0, "INPUTS:", 6, 7);
-    if (is_keyboard_master()) {
-        render_cur_input_helper_fun(1, (const char *)(m2s.current_alp), 12, 6);
+void render_cpm_graph(void) {
+    if (is_keyboard_master()) { 
+      render_cpm_graph_helper(m2s.cpm_column, m2s.cpm_key_count);
     } else {
-        render_cur_input_helper_fun(1, (const char *)(s2m.current_alp), 12, 6);
+      render_cpm_graph_helper(s2m.cpm_column, s2m.cpm_key_count);
     }
-    return;
+}
+
+void update_cpm_timer(void) {
+    if (is_keyboard_master()) {
+        static uint32_t cpm_chart_time = 0;
+        if (timer_elapsed32(cpm_chart_time) > CPM_TIME_PER_PIXEL_MS) {
+            cpm_chart_time = timer_read32();
+            m2s.cpm_key_count = 0;
+            m2s.cpm_column = (cpm_chart_time % CPM_TOTAL_TIME_WINDOW_MS) / CPM_TIME_PER_PIXEL_MS;
+        }
+    }
 }
 
 bool oled_task_kb(void) {
@@ -181,12 +201,12 @@ bool oled_task_kb(void) {
         return false;
     }
     render_logo();
+    
+    update_cpm_timer();
     if (is_keyboard_left()) {
         render_layer(get_highest_layer(layer_state));
     } else {
-        if (enable_input_echo) {
-            render_cur_input();
-        }
+        render_cpm_graph();
     }
     return false;
 }
@@ -232,15 +252,13 @@ void get_cur_alp_hook(uint16_t keycode) {
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         get_cur_alp_hook(keycode);
+        m2s.cpm_key_count = m2s.cpm_key_count >= CPM_MAX_PIXELS ? CPM_MAX_PIXELS : m2s.cpm_key_count + 1;
     }
     if (!process_record_user(keycode, record)) {
         return false;
     }
     switch (keycode) {
         case TOG_OLED:
-            if (record->event.pressed) {
-                enable_input_echo = !enable_input_echo;
-            }
             return false;
         default:
             return true;
@@ -261,6 +279,8 @@ void user_sync_alpa_slave_handler(uint8_t in_buflen, const void *in_data, uint8_
     for (size_t i = 0; i < 7; i++) {
         s2m.current_alp[i] = m2s_p->current_alp[i];
     }
+    s2m.cpm_key_count = m2s_p->cpm_key_count;
+    s2m.cpm_column = m2s_p->cpm_column;
 }
 
 void keyboard_post_init_kb(void) {
@@ -275,7 +295,7 @@ void housekeeping_task_kb(void) {
         if (timer_elapsed32(last_sync) > 200) {
             if (transaction_rpc_exec(KEYBOARD_CURRENT_ALPA_SYNC, sizeof(m2s), &m2s, sizeof(s2m), &s2m)) {
                 last_sync = timer_read32();
-                dprint("Slave sync successed!\n");
+                dprint("Slave sync succeeded!\n");
             } else {
                 dprint("Slave sync failed!\n");
             }
